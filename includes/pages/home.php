@@ -1,3 +1,3 @@
 <div class="container">
-    <?php echo $data['hello'] ?> there!! (home)
+    <?php echo $data['hello'] ?> you!! (home)
 </div>
