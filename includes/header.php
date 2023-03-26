@@ -14,9 +14,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown05">
-              <li><a class="dropdown-item" href="#">Categorie 1</a></li>
-              <li><a class="dropdown-item" href="#">Categorie 2</a></li>
-              <li><a class="dropdown-item" href="#">Categorie 3</a></li>
+              <li><a class="dropdown-item" href="#">bague femme</a></li>
+              <li><a class="dropdown-item" href="#">bague homme</a></li>
+              <li><a class="dropdown-item" href="#">bague personalisée</a></li>
             </ul>
           </li>
         </ul>
