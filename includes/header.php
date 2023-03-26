@@ -25,8 +25,8 @@
         </form>
 
         <div class="text-end">
-          <a href="<?php echo route('/login') ?>" type="button" class="btn btn-outline-light me-2">Connecter</a>
-          <button type="button" class="btn btn-warning">Créer un compte</button>
+          <a href="<?php echo route('/login') ?>" class="btn btn-outline-light me-2">Connecter</a>
+          <a href="<?php echo route('/register') ?>" class="btn btn-warning">Créer un compte</a>
         </div>
       </div>
     </div>
