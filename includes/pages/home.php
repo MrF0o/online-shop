@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <div id="featuredProductsIndicator" class="carousel slide col-md-10 col-lg-12  " data-bs-ride="carousel">
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <div id="featuredProductsIndicator" class="carousel slide col-md-10 col-lg-12  col-12" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#featuredProductsIndicator" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Product 1"></button>
             <button type="button" data-bs-target="#featuredProductsIndicator" data-bs-slide-to="1" aria-label="Product 2"></button>
