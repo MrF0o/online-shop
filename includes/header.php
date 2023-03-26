@@ -1,6 +1,6 @@
 <header class="p-2 bg-dark text-white">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#"> <?php echo $site_name ?></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
