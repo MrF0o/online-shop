@@ -2,3 +2,12 @@
     cursor: pointer;
     opacity: 0.5;
 }
+
+/* tsawer s8ar chwy tw njib m akber */
+.slide-content {
+    background: url('images/1.png');
+    min-height: 360px !important;
+    width: 50% !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
