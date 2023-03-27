@@ -1,3 +1,5 @@
+
+
 <?php
 
 $db_user = 'root';
@@ -7,3 +9,4 @@ $db_host = 'localhost';
 
 $site_name = "Brand";
 $dirname = basename(__DIR__);;
+

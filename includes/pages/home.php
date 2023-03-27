@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <div id="featuredProductsIndicator" class="carousel slide col-md-10 col-lg-12  " data-bs-ride="carousel">
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <div id="featuredProductsIndicator" class="carousel slide col-md-10 col-lg-12  col-12" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#featuredProductsIndicator" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Product 1"></button>
             <button type="button" data-bs-target="#featuredProductsIndicator" data-bs-slide-to="1" aria-label="Product 2"></button>
@@ -8,8 +8,11 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="bg-secondary d-flex justify-content-center align-items-center">
-                    <p class="text-white h4 py-5">nchlh njibou taswira article 1 lhne </p>
-                </div>
+                <p class="text-white h4 py-5"> <img src="1.jpg" width=100% height=100%/>
+</p>
+
+
+</div>
             </div>
             <div class="carousel-item">
                 <div class="bg-secondary d-flex justify-content-center align-items-center">
@@ -63,6 +66,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
                 <img style="max-height:16rem;object-fit:cover" src="<?php echo img('test-img-3.png') ?>" class="card-img-top" style alt="...">
                 <div class="card-body">
@@ -76,6 +81,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
+                <img style="max-height:16rem;object-fit:cover" src="<?php echo img('test-img-5.png') ?>" class="card-img-top" style alt="...">
+                <div class="card-body">
+                    <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
+                    <div class="text-center">
+                        <span class="text-decoration-line-through">230DT</span>
+                        <span style="font-weight:500">230DT</span>
+                    </div>
+                    <div class="pt-4 text-center">
+                        <button class="btn btn-outline-dark">Ajouter au pannier</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
             <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
                 <img style="max-height:16rem;object-fit:cover" src="<?php echo img('test-img-4.png') ?>" class="card-img-top" style alt="...">
                 <div class="card-body">

@@ -1,7 +1,7 @@
 <header class="p-2 bg-dark text-white">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"> <?php echo $site_name ?></a>
+    <div class="container">
+      <a class="navbar-brand" href="<?php echo route('/') ?>"> <?php echo $site_name ?></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,8 +25,8 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Connecter</button>
-          <button type="button" class="btn btn-warning">Créer un compte</button>
+          <a href="<?php echo route('/login') ?>" class="btn btn-outline-light me-2">Connecter</a>
+          <a href="<?php echo route('/register') ?>" class="btn btn-warning">Créer un compte</a>
         </div>
       </div>
     </div>
