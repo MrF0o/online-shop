@@ -22,7 +22,7 @@ if (isset($_SESSION['login'])) {
 
 <div class="container text-center">
     <div class="h3">
-        Bonjour Monsieur: <?php echo $membre['frst_name'] ?>
+        Bonjour <?php echo $membre['frst_name'] ?>
     </div>
 </div>
 
