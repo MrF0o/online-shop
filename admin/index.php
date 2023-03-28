@@ -1,3 +1,10 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
-echo 'tw na5tarou template kima galet lprofa';
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+    header('Location: dashboard.php');
+} else {
+    header('Location: login.php');
+}
