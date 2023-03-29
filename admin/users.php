@@ -3,8 +3,13 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// ken mch logged in redirecti lel login
+include '../config.php';
+
+// ken mch logged in wla mch admin redirecti lel login
 if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+    $sql = 'SELECT * from clients';
+    $res = mysqli_query($db, $sql);
+    $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
 } else {
     header('Location: login.php');
 }
@@ -29,19 +34,27 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="min-width">1</td>
-                        <td class="min-width">Test</td>
-                        <td class="min-width">test</td>
-                        <td class="min-width">test@exemple.com</td>
-                        <td class="min-width">
-                            <div>
-                                <a href="#" class="btn btn-danger">
-                                    Supprimer
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php if (isset($users) && count($users) > 0) : ?>
+                        <?php foreach ($users as $u) : ?>
+                            <tr>
+                                <td class="min-width"><?php echo $u['id'] ?></td>
+                                <td class="min-width"><?php echo $u['frst_name'] ?></td>
+                                <td class="min-width"><?php echo $u['last_name'] ?></td>
+                                <td class="min-width"><?php echo $u['email'] ?></td>
+                                <td class="min-width">
+                                    <div>
+                                        <a href="delete.php?type=user&id=<?php echo $u['id'] ?>" class="btn btn-danger">
+                                            Supprimer
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="text-center text-muted">
+                            <td colspan="3" class="text-center text-muted h6">il n'y a pas de données à afficher</td>
+                        </div>
+                    <?php endif ?>
                 </tbody>
             </table>
         </div>
