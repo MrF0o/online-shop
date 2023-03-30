@@ -1,5 +1,24 @@
 .drop-wrapper {
     padding: 3rem 1.5rem;
-    border: 2px dashed gray;
+    border: 2px dashed rgb(128, 128, 128, 0.5);
     border-radius: 12px;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.drop-wrapper:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 2px dashed rgb(128, 128, 128);
+}
+
+.p-img-preview {
+    height: 120px;
+    width: 180px;
+    overflow: hidden;
+}
+
+#preview-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

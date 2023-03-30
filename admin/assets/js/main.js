@@ -31,4 +31,44 @@
     overlay.classList.remove("active");
     mainWrapper.classList.remove("active");
   });
+
+
+  // Our js start: JQuery
+
+  // ----------- DRAG & DROP -------------
+  $('#preview-img').hide();
+  $('.drop-wrapper').on(
+    'dragover',
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  );
+  $('.drop-wrapper').on(
+    'dragenter',
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  );
+
+  $('.drop-wrapper').on(
+    'drop',
+    function (e) {
+      if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+        e.preventDefault();
+        e.stopPropagation();
+        const [file] = e.originalEvent.dataTransfer.files;
+        $('#preview-img').attr('src', URL.createObjectURL(file));
+        $('#preview-img').show();
+      }
+    }
+  );
+
+  $('#product-image').change(function (e) {
+    const [file] = this.files;
+    $('#preview-img').attr('src', URL.createObjectURL(file));
+    $('#preview-img').show();
+  })
+
 })();

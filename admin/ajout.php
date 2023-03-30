@@ -27,6 +27,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     }
 
     if (isset($_POST['add_prod'])) {
+        // nsit l prix!!
         $msg['type'] = 'prod';
         if (!empty($_POST['category']) && !empty($_POST['product_title']) && !empty($_POST['product_desc'])) {
             $title = mysqli_escape_string($db, $_POST['product_title']);
@@ -132,9 +133,12 @@ if ($_GET['type'] == 'produit') {
                         </div>
                     </div>
 
-                    <label for="product-image" class="custom-image-upload input-style-1">
+                    <label for="product-image" class="custom-image-upload input-style-1 d-flex justify-content-between">
                         <div class="drop-wrapper">
                             Glisser une image, ou <span class="text-primary">naviguer</span>
+                        </div>
+                        <div class="p-img-preview">
+                            <img src="" id="preview-img">
                         </div>
                         <input type="file" name="product_image" id="product-image" hidden>
                     </label>
