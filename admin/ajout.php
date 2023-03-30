@@ -36,6 +36,32 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
             $query = "INSERT INTO article(title, description, category_id) VALUES('$title', '$desc', '$cat_id')";
             mysqli_query($db, $query);
 
+            // nzidou record f table images w naamlou enregistrer lel fichier f local
+            if (!empty($_FILES['product_image'])) {
+                $upload_dir = '../images/upload/';
+                $upload_path = $upload_dir . bin2hex(openssl_random_pseudo_bytes(10)) . $_FILES['product_image']['name']; // 20 chars aléatoires puis nom de fichier
+
+                $check = getimagesize($_FILES['product_image']["tmp_name"]);
+                if ($check !== false) {
+                    // ken l'image akber mn 5MB
+                    if ($_FILES['product_image']["size"] > 5000000) {
+                        $msg['success'] = false;
+                        $msg['msg'] = 'la taille de l\'image doit être inférieure à 5 Mo';
+                    } else {
+                        // TODO: check for permissions
+                        move_uploaded_file($_FILES["product_image"]["tmp_name"], $upload_path);
+                        $escaped = mysqli_escape_string($db, $upload_path);
+
+                        $article_id = mysqli_insert_id($db);
+                        $sql = "INSERT INTO images(article_id, path) VALUES ($article_id, '$escaped')";
+                        mysqli_query($db, $sql);
+                    }
+                } else {
+                    $msg['success'] = false;
+                    $msg['msg'] = 'le fichier n\'est pas une image';
+                }
+            }
+
             $msg['success'] = true;
         } else {
             $msg['success'] = false;
@@ -82,7 +108,7 @@ if ($_GET['type'] == 'produit') {
             <h3>Ajouter un article</h3>
 
             <div class="col-md-6 mt-3">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
 
                     <div class="input-style-2">
                         <label for="product_title">Titre de l'article</label>
@@ -106,15 +132,18 @@ if ($_GET['type'] == 'produit') {
                         </div>
                     </div>
 
+                    <label for="product-image" class="custom-image-upload input-style-1">
+                        <div class="drop-wrapper">
+                            Glisser une image, ou <span class="text-primary">naviguer</span>
+                        </div>
+                        <input type="file" name="product_image" id="product-image" hidden>
+                    </label>
+
                     <div class="input-style-2">
                         <button name="add_prod" type="submit" class="btn btn-primary">Ajouter</button>
                     </div>
 
                 </form>
-
-                <blockquote class="blockquote rounded p-1" style="border-left: 3px solid orange">
-                    TODO: taswira mtaa l'article
-                </blockquote>
             </div>
 
         <?php endif ?>
@@ -151,8 +180,8 @@ if ($_GET['type'] == 'produit') {
 
 <script>
     // ala 5ater lpage taamel resubmit lel form
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
     }
 </script>
 
