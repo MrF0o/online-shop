@@ -1,3 +1,33 @@
+<?php
+
+include 'config.php';
+
+$query1 = "SELECT * from article ORDER BY RAND() LIMIT 4";
+$query2 = "SELECT * from categories";
+
+$images = [];
+
+$res = mysqli_query($db, $query1);
+$products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+$res = mysqli_query($db, $query2);
+$categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+foreach($products as $prod) {
+    $q = 'SELECT path FROM images WHERE article_id=' . $prod['id'];
+    $res = mysqli_query($db, $q);
+    $path = mysqli_fetch_column($res);
+    // n7ou ../ mn awel chaine
+    if (substr($path, 0, strlen('../')) == '../') {
+        $path = substr($path, strlen('../'));
+    }
+
+    array_push($images, $path);
+}
+
+?>
+
+
 <?php include(__DIR__ . '/header.php') ?>
 
 <div class="hero">
@@ -61,20 +91,23 @@
             <h4 class="h4 fw-4">Nos séléctions</h4>
         </div>
         <div class="card-body row gap-3">
+            <?php foreach($products as $key => $prod): ?>
             <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
-                <img style="max-height:16rem;object-fit:cover" src="./images/1.png" class="card-img-top">
+                <a href="product.php?id=<?php echo $prod['id'] ?>"><img style="max-height:16rem;object-fit:cover" src="<?php echo $images[$key] ?>" class="card-img-top"></a>
                 <div class="card-body">
-                    <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
+                    <h3 class="fs-4 fw-4 text-center card-title"><a class="text-decoration-none text-dark" href="product.php?id=<?php echo $prod['id'] ?>"><?php echo htmlentities($prod['title']) ?></a></h3>
                     <div class="text-center">
-                        <span class="text-decoration-line-through">230DT</span>
-                        <span style="font-weight:500">230DT</span>
+                        <!-- <span class="text-decoration-line-through">230DT</span> -->
+                        <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
                     </div>
                     <div class="pt-4 text-center">
                         <button class="btn btn-outline-dark">Ajouter au pannier</button>
                     </div>
                 </div>
             </div>
-            <div class="card col-12 col-md w-100 p-0">
+            <?php endforeach ?>
+
+            <!-- <div class="card col-12 col-md w-100 p-0">
                 <img style="max-height:16rem;object-fit:cover" src="./images/2.png" class="card-img-top">
                 <div class="card-body">
                     <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
@@ -115,7 +148,7 @@
                         <button class="btn btn-outline-dark">Ajouter au pannier</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="d-flex justify-content-center">
             <a href="#" class="btn btn-outline-dark m-2">Afficher tous</a>

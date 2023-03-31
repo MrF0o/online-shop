@@ -27,14 +27,14 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     }
 
     if (isset($_POST['add_prod'])) {
-        // nsit l prix!!
         $msg['type'] = 'prod';
         if (!empty($_POST['category']) && !empty($_POST['product_title']) && !empty($_POST['product_desc'])) {
             $title = mysqli_escape_string($db, $_POST['product_title']);
             $desc = mysqli_escape_string($db, $_POST['product_desc']);
+            $price = mysqli_escape_string($db, $_POST['product_price']);
             $cat_id = mysqli_escape_string($db, $_POST['category']);
 
-            $query = "INSERT INTO article(title, description, category_id) VALUES('$title', '$desc', '$cat_id')";
+            $query = "INSERT INTO article(title, description, prix, category_id) VALUES('$title', '$desc', $price, '$cat_id')";
             mysqli_query($db, $query);
 
             // nzidou record f table images w naamlou enregistrer lel fichier f local
@@ -118,6 +118,10 @@ if ($_GET['type'] == 'produit') {
                     <div class="input-style-2">
                         <label for="product_desc">Description de l'article</label>
                         <textarea type="text" name="product_desc" id="product_desc" class="form-control" rows="4" placeholder="Description de l'article"></textarea>
+                    </div>
+                    <div class="input-style-2">
+                        <label for="product_price">Prix de l'article</label>
+                        <input type="number" name="product_price" id="product_price" class="form-control" rows="4" placeholder="Prix de l'article"></input>
                     </div>
                     <div class="select-style-1">
                         <label>Category</label>
