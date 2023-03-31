@@ -101,54 +101,11 @@ foreach($products as $prod) {
                         <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
                     </div>
                     <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark">Ajouter au pannier</button>
+                        <button class="btn btn-outline-dark" onclick="addToCart">Ajouter au pannier</button>
                     </div>
                 </div>
             </div>
             <?php endforeach ?>
-
-            <!-- <div class="card col-12 col-md w-100 p-0">
-                <img style="max-height:16rem;object-fit:cover" src="./images/2.png" class="card-img-top">
-                <div class="card-body">
-                    <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
-                    <div class="text-center">
-                        <span class="text-decoration-line-through">230DT</span>
-                        <span style="font-weight:500">230DT</span>
-                    </div>
-                    <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark">Ajouter au pannier</button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
-                <img style="max-height:16rem;object-fit:cover" src="./images/3.png" class="card-img-top" style alt="...">
-                <div class="card-body">
-                    <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
-                    <div class="text-center">
-                        <span class="text-decoration-line-through">230DT</span>
-                        <span style="font-weight:500">230DT</span>
-                    </div>
-                    <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark">Ajouter au pannier</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
-                <img style="max-height:16rem;object-fit:cover" src="./images/4.png" class="card-img-top" style alt="...">
-                <div class="card-body">
-                    <h3 class="fs-4 fw-4 text-center card-title">test produit</h3>
-                    <div class="text-center">
-                        <span class="text-decoration-line-through">230DT</span>
-                        <span style="font-weight:500">230DT</span>
-                    </div>
-                    <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark">Ajouter au pannier</button>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <div class="d-flex justify-content-center">
             <a href="#" class="btn btn-outline-dark m-2">Afficher tous</a>

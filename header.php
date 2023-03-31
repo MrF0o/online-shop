@@ -1,8 +1,7 @@
 <?php
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 ?>
 
@@ -49,8 +48,21 @@ if(!isset($_SESSION))
                         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
                     </form>
 
+                    <a class="btn btn-lg me-2 btn-light" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+
                     <?php if (isset($_SESSION['login'])) : ?>
-                        <a class="btn btn-primary" href="membre.php">Espace membre</a>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-regular fa-user"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="membre.php">Espace Membre</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li class="small"><a class="dropdown-item text-danger" href="logout.php">Déconnecter</a></li>
+                            </ul>
+                        </div>
                     <?php else : ?>
                         <div class="text-end">
                             <a href="login.php" class="btn btn-outline-light me-2">Connecter</a>
