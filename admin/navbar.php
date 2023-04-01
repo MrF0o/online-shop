@@ -18,8 +18,8 @@
                             <div class="profile-info">
                                 <div class="info">
                                     <h6>Test</h6>
-                                    <div class="image">
-                                        <img src="assets/images/profile/profile-image.png" alt="" />
+                                    <div class="ps-3 h3">
+                                        <div class="mdi mdi-account"></div>
                                     </div>
                                 </div>
                             </div>
