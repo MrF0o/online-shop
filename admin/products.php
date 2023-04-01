@@ -3,8 +3,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+include '../config.php';
+
 // ken mch logged in redirecti lel login
 if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+
+    $sql = 'SELECT * from article';
+    $res = mysqli_query($db, $sql);
+    $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 } else {
     header('Location: login.php');
 }
@@ -25,7 +31,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
             </div>
         </div>
         <div class="table-wrapper table-responsive">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <th>#</th>
                     <th>nom</th>
@@ -34,22 +40,32 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="min-width">1</td>
-                        <td class="min-width">Produit 1</td>
-                        <td class="min-width">this is a great description</td>
-                        <td class="min-width">145DT</td>
-                        <td class="min-width">
-                            <div class="d-flex">
-                                <a href="#" class="d-block btn btn-danger btn-sm me-1">
-                                    Supprimer
-                                </a>
-                                <a href="#" class="d-block btn btn-success btn-sm">
-                                    Modifier
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php if (isset($products) && count($products) > 0) : ?>
+                        <?php foreach ($products as $p) : ?>
+                            <tr>
+                                <td class="min-width"><?php echo $p['id'] ?></td>
+                                <td class="min-width"><?php echo $p['title'] ?></td>
+                                <td class="min-width text-truncate" style="max-width: 35rem;">
+                                    <p class="text-truncate"><?php echo $p['description'] ?></p>
+                                </td>
+                                <td class="min-width"><?php echo $p['prix'] ?> TD</td>
+                                <td class="min-width">
+                                    <div class="d-flex">
+                                        <a href="delete.php?type=prod&id=<?php echo $p['id'] ?>" class="d-block btn btn-danger btn-sm me-1">
+                                            Supprimer
+                                        </a>
+                                        <a href="#" class="d-block btn btn-success btn-sm">
+                                            Modifier
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="text-center text-muted">
+                            <td colspan="3" class="text-center text-muted h6">il n'y a pas de données à afficher</td>
+                        </div>
+                    <?php endif ?>
                 </tbody>
             </table>
         </div>
