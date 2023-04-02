@@ -101,7 +101,7 @@ foreach($products as $prod) {
                         <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
                     </div>
                     <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark" onclick="addToCart">Ajouter au pannier</button>
+                        <button class="btn btn-outline-dark" onclick="addToCart(<?php echo $prod['id'] ?>)">Ajouter au pannier</button>
                     </div>
                 </div>
             </div>

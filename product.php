@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
                 <p><?php echo htmlentities($product['description']) ?></p>
             </div>
             <div class="mt-auto mx-auto">
-                <button class="btn btn-lg add-to-cart btn-light">Ajouter au pannier</button>
+                <button class="btn btn-lg add-to-cart btn-light" onclick="addToCart(<?php echo $product['id'] ?>)">Ajouter au pannier</button>
                 <button class="btn btn-lg add-to-cart btn-dark">Acheter maintenant</button>
             </div>
         </div>

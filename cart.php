@@ -7,7 +7,22 @@
 
 if (isset($_GET['is_json'])) {
     // request jeya ml js kif yclicki ala button 'Ajouter au pannier'
+    $old_cart = [
+        'products' => array()
+    ];
 
+    if (isset($_COOKIE['cart'])) {
+        $old_cart = json_decode($_COOKIE['cart'], true);
+    }
+
+    if (!in_array($_POST['product'], $old_cart['products'])) {
+        array_push($old_cart['products'], $_POST['product']);
+        setcookie('cart', json_encode($old_cart), time() + 3600);
+    }
+
+
+    header('Content-Type: application/json');
+    echo json_encode($old_cart);
     exit; // mouch lazem HTML 5atr deja handled 
 }
 ?>

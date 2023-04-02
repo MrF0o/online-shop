@@ -67,6 +67,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
                         </div>
                     <?php endif ?>
                 </tbody>
+                <!-- Normalement fama pagination 5atr ynajm ykoun fma 1000 produits!!  -->
             </table>
         </div>
     </div>
