@@ -36,7 +36,7 @@ foreach($products as $prod) {
             <div>
                 <h1 class="display-3 fw-bold text-capitalize">profitez c'est l'occasion ou jamais ne ratez pas !</h1>
                 <p class="fw-normal"> Repudiandae quidem dicta tenetur illo rerum eveniet veritatis sit mollitia perspiciatis autem,<br> nisi libero commodi deleniti nemo quisquam amet consequatur accusamus harum.</p>
-                <button class="btn btn-lg btn-outline-light">Shop Now</button>
+                <a href="#products" class="btn btn-lg btn-outline-light">Shop Now</a>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ foreach($products as $prod) {
         </button>
     </div> -->
 
-    <div class="products card mt-5 w-100">
+    <div class="products card mt-5 w-100" id="products">
         <div class="products-header card-header">
             <h4 class="h4 fw-4">Nos séléctions</h4>
         </div>
