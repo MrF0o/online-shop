@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <aside class="col-md-2 d-none d-md-block">
+        <aside class="col-md-2 d-none d-md-block position-fixed">
             <div>
                 <div class="fw-semibold text-muted border-bottom py-1 m-1">Categories</div>
                 <div>
@@ -34,7 +34,7 @@
             </div>
         </aside>
 
-        <main class="col">
+        <main class="col search-product-main">
             <div class="px-md-5">
                 <div class="search-form-main">
                     <form action="" class="row">

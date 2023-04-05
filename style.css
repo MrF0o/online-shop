@@ -90,3 +90,19 @@
         opacity: 1;
     }
 }
+
+.search-product-main {
+    margin-left: 16rem;
+}
+
+@media screen and (max-width: 993px) {
+    .search-product-main {
+        margin-left: 8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-product-main {
+        margin-left: 0;
+    }
+}
