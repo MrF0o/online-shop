@@ -60,3 +60,33 @@
     width: 100%;
     object-fit: contain;
 }
+
+.product-card {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    transform: translatey(-50%);
+    width: 100%;
+    border-radius: 6px;
+}
+
+.product-card:hover .overlay {
+    display: flex !important;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
