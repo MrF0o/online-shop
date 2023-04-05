@@ -9,7 +9,12 @@ function addToCart(id) {
     })
 
     request.done(function (data) {
-        // produit saye fel pannier wala
+        // produit saye fel pannier
+        // chna3mlou??
         console.log(data);
     })
+}
+
+function delCartItem(id) {
+    alert('lazm nfas5ou article id=' + id + ' ml pannier');
 }
