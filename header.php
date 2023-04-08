@@ -44,11 +44,18 @@ if (!isset($_SESSION)) {
                             </ul>
                         </li>
                     </ul>
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5">
                         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
                     </form>
 
-                    <a class="btn btn-lg me-2 btn-light" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="btn btn-lg me-2 btn-light position-relative me-5" href="cart.php">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-" id="cart-count">
+                            0
+                            <span class="visually-hidden">Articles dans le pannier</span>
+                        </span>
+
+                    </a>
 
                     <?php if (isset($_SESSION['login'])) : ?>
                         <div class="dropdown">

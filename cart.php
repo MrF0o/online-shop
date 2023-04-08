@@ -8,6 +8,7 @@ include 'config.php';
 // ma 3ndach compte ynajm ykoun 3nda pannier
 
 if (isset($_GET['is_json'])) {
+
     // request jeya ml js kif yclicki ala button 'Ajouter au pannier'
     $old_cart = [
         'products' => array()
@@ -17,15 +18,39 @@ if (isset($_GET['is_json'])) {
         $old_cart = json_decode($_COOKIE['cart'], true);
     }
 
-    if (!in_array($_POST['product'], $old_cart['products'])) {
-        array_push($old_cart['products'], $_POST['product']);
-        setcookie('cart', json_encode($old_cart), time() + 3600);
+    if ($_POST['action'] == 'getCartCount') {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'count' => count($old_cart['products'])
+        ]);
+        exit; // mouch lazem HTML 5atr deja handled 
     }
 
+    if ($_POST['action'] == 'addToCart') {
 
-    header('Content-Type: application/json');
-    echo json_encode($old_cart);
-    exit; // mouch lazem HTML 5atr deja handled 
+        if (!in_array($_POST['product'], $old_cart['products'])) {
+            array_push($old_cart['products'], $_POST['product']);
+            setcookie('cart', json_encode($old_cart), time() + 3600);
+        }
+
+
+        header('Content-Type: application/json');
+        echo json_encode($old_cart);
+        exit; // mouch lazem HTML 5atr deja handled 
+    } 
+    
+    if ($_POST['action'] == 'delCartItem') {
+
+        if (($key = array_search($_POST['product'], $old_cart['products'])) !== false) {
+            unset($old_cart['products'][$key]);
+            setcookie('cart', json_encode($old_cart), time() + 3600);
+        }
+
+
+        header('Content-Type: application/json');
+        echo json_encode($old_cart);
+        exit; // mouch lazem HTML 5atr deja handled 
+    }
 } else {
 
     function rmPrefix($str)
@@ -39,17 +64,19 @@ if (isset($_GET['is_json'])) {
     }
 
     if (isset($_COOKIE['cart'])) {
-        $cart = json_decode($_COOKIE['cart']);
-        $IDs = implode(',', array_map('intval', $cart->products));
-        $sql = "SELECT article.*, images.path FROM article INNER JOIN images ON images.article_id=article.id WHERE article.id IN ($IDs)";
-        $res = mysqli_query($db, $sql);
+        $cart = json_decode($_COOKIE['cart'], true);
+        if (count($cart['products'])) {
+            $IDs = implode(',', array_map('intval', $cart['products']));
+            $sql = "SELECT article.*, images.path FROM article INNER JOIN images ON images.article_id=article.id WHERE article.id IN ($IDs)";
+            $res = mysqli_query($db, $sql);
 
-        $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+            $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-        $products =  array_map(function ($p) {
-            $p['path'] = rmPrefix($p['path']);
-            return $p;
-        }, $products);
+            $products =  array_map(function ($p) {
+                $p['path'] = rmPrefix($p['path']);
+                return $p;
+            }, $products);
+        }
     }
 }
 ?>
