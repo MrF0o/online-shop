@@ -13,7 +13,7 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 $res = mysqli_query($db, $query2);
 $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-foreach($products as $prod) {
+foreach ($products as $prod) {
     $q = 'SELECT path FROM images WHERE article_id=' . $prod['id'];
     $res = mysqli_query($db, $q);
     $path = mysqli_fetch_column($res);
@@ -29,18 +29,41 @@ foreach($products as $prod) {
 
 
 <?php include(__DIR__ . '/header.php') ?>
+<div class="hero-wrapper">
+    <div class="hero">
+        <h6>période limitée</h6>
+        <h3>Profitez C'est L'occasion <br>
+            Ou Jamais Ne Ratez Pas !</h3>
 
-<div class="hero">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container d-flex h-100 flex-column justify-content-center">
-            <div>
-                <h1 class="display-3 fw-bold text-capitalize">profitez c'est l'occasion ou jamais ne ratez pas !</h1>
-                <p class="fw-normal"> Repudiandae quidem dicta tenetur illo rerum eveniet veritatis sit mollitia perspiciatis autem,<br> nisi libero commodi deleniti nemo quisquam amet consequatur accusamus harum.</p>
-                <a href="#products" class="btn btn-lg btn-outline-light">Shop Now</a>
+        <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4">Shop Now</button>
+    </div>
+</div>
+<div class="container">
+    <div class="row about d-flex justify-content-center p-5">
+        <div class="col-6">
+            <h3>Some big Title HERE we should convince them to buy</h3>
+            <p>Repudiandae quidem dicta tenetur illo rerum eveniet veritatis sit mollitia perspiciatis autem,nisi libero commodi deleniti nemo quisquam amet consequatur accusamus harum.</p>
+            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase">explorer</button>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <img src="images/image-preview-1.png">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mt-5">
+        <div class="gallery-wrapper d-flex align-items-center justify-content-center">
+            <div class="gallery-text text-center">
+                <h2>Brand</h2>
+                <h4>We Make Difference</h4>
             </div>
+        </div>
+        <div class="w-100 text-center mt-5">
+            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase golden-btn">Afficher tous</button>
         </div>
     </div>
 </div>
+
+<?php include(__DIR__ . '/footer.php') ?>
+<?php die ?>
 
 <div class="container mt-5 d-flex flex-column align-items-center">
     <!-- <div id="featuredProductsIndicator" class="carousel slide col-md-6 shadow" data-bs-ride="carousel">
@@ -91,20 +114,20 @@ foreach($products as $prod) {
             <h4 class="h4 fw-4">Nos séléctions</h4>
         </div>
         <div class="card-body row gap-3">
-            <?php foreach($products as $key => $prod): ?>
-            <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
-                <a href="product.php?id=<?php echo $prod['id'] ?>"><img style="max-height:16rem;object-fit:cover" src="<?php echo $images[$key] ?>" class="card-img-top"></a>
-                <div class="card-body">
-                    <h3 class="fs-4 fw-4 text-center card-title"><a class="text-decoration-none text-dark" href="product.php?id=<?php echo $prod['id'] ?>"><?php echo htmlentities($prod['title']) ?></a></h3>
-                    <div class="text-center">
-                        <!-- <span class="text-decoration-line-through">230DT</span> -->
-                        <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
-                    </div>
-                    <div class="pt-4 text-center">
-                        <button class="btn btn-outline-dark" onclick="addToCart(<?php echo $prod['id'] ?>)">Ajouter au pannier</button>
+            <?php foreach ($products as $key => $prod) : ?>
+                <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
+                    <a href="product.php?id=<?php echo $prod['id'] ?>"><img style="max-height:16rem;object-fit:cover" src="<?php echo $images[$key] ?>" class="card-img-top"></a>
+                    <div class="card-body">
+                        <h3 class="fs-4 fw-4 text-center card-title"><a class="text-decoration-none text-dark" href="product.php?id=<?php echo $prod['id'] ?>"><?php echo htmlentities($prod['title']) ?></a></h3>
+                        <div class="text-center">
+                            <!-- <span class="text-decoration-line-through">230DT</span> -->
+                            <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
+                        </div>
+                        <div class="pt-4 text-center">
+                            <button class="btn btn-outline-dark" onclick="addToCart(<?php echo $prod['id'] ?>)">Ajouter au pannier</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach ?>
         </div>
         <div class="d-flex justify-content-center">
@@ -145,5 +168,3 @@ foreach($products as $prod) {
         </div>
     </div>
 </div>
-
-<?php include(__DIR__ . '/footer.php') ?>

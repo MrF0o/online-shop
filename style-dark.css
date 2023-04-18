@@ -1,0 +1,119 @@
+body {
+    background-color: #181818;
+    font-family: 'Fraunces', serif;
+    color: white;
+}
+
+header img {
+    height: 32px;
+    width: 32px;
+}
+
+.brand {
+    font-family: 'Italiana', sans-serif;
+    color: white;
+    font-size: 36px;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.brand-desc {
+    color: #D4A413;
+    font-size: 20px;
+}
+
+.nav-item {
+    font-size: 20px;
+    color: #74736F;
+}
+
+.nav-item>a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hero-wrapper {
+    background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 733px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.hero > h6 {
+    color: white;
+    font-size: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.hero > h3 {
+    color: white;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 3.75rem;
+    letter-spacing: .40rem;
+    font-size: 48px;
+}
+
+.about button, .hero > button, .golden-btn {
+    border-color: #D4A413;
+    color: #D4A413;
+}
+
+.hero > button:hover, .about button:hover, .golden-btn:hover {
+    background-color: #D4A413;
+    color: white;
+    border-color: #D4A413;
+}
+
+.about h3 {
+    text-transform: uppercase;
+}
+
+.about img {
+    height: 266px;
+    width: 266px;
+}
+
+.about p {
+    color: #74736F;
+}
+
+.gallery-wrapper {
+    background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/gallery.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1 / 1;
+    background-position: center;
+    height: 780px;
+    width: auto;
+    box-shadow: 17px 1px 80px 2px rgba(0, 0, 0, 0.7);
+}
+
+.gallery-text > h2 {
+    font-size: 38px;
+}
+
+.gallery-text > h4 {
+    font-size: 24px;
+    color: #D4A413;
+}
+
+.footer {
+    background-color: #181818 !important;
+    text-align: center;
+    color: #74736F;
+}

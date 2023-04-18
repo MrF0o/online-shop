@@ -1,6 +1,6 @@
-<footer class="footer mt-auto py-3 bg-light">
+<footer class="footer p-5 mt-5 py-3 bg-light">
   <div class="container">
-    <span class="text-muted">Copyright &#169; 2023</span>
+    <span>Copyright &#169; 2023</span>
   </div>
 </footer>
 
