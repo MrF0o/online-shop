@@ -30,7 +30,7 @@ foreach ($products as $prod) {
 
 <?php include(__DIR__ . '/header.php') ?>
 <div class="hero-wrapper">
-    <div class="hero">
+    <div class="hero text-center">
         <h6>période limitée</h6>
         <h3>Profitez C'est L'occasion <br>
             Ou Jamais Ne Ratez Pas !</h3>
@@ -49,6 +49,68 @@ foreach ($products as $prod) {
             <img src="images/image-preview-1.png">
         </div>
     </div>
+    <div class="row products justify-content-center align-content-center mt-5">
+        <div class="row justify-content-center align-content-center">
+            <div class="text-center">
+                <h3 class="text-uppercase">à la mode maintenant</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center align-content-center gap-5 mt-3">
+
+            <?php foreach ($products as $key => $prod) : ?>
+
+                <div class="product-card col p-3 d-flex flex-column align-items-center">
+                    <div class="product-thumb">
+                        <img src="<?php echo $images[$key] ?>" alt="">
+                    </div>
+
+                    <div class="product-title text-center p-2">
+                        <h5><?php echo htmlentities($prod['title']) ?></h5>
+                    </div>
+
+                    <div class="product-price-span text-center">
+                        <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
+                    </div>
+                    
+                    <div class="overlay d-none pt-4 text-center">
+                        <div class="h-100 w-100 d-flex flex-column justify-content-center">
+                            <button class="btn bg-dark-main golden-btn" onclick="addToCart(<?php echo $prod['id'] ?>)">Ajouter au pannier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="card col-12 col-md w-100 p-0" style="width:18rem;">
+                    <a href="product.php?id=<?php echo $prod['id'] ?>"><img style="max-height:16rem;object-fit:cover" src="<?php echo $images[$key] ?>" class="card-img-top"></a>
+                    <div class="card-body">
+                        <h3 class="fs-4 fw-4 text-center card-title"><a class="text-decoration-none text-dark" href="product.php?id=<?php echo $prod['id'] ?>"><?php echo htmlentities($prod['title']) ?></a></h3>
+                        <div class="text-center">
+                            
+                            <span style="font-weight:500"><?php echo htmlentities($prod['prix']) ?> DT</span>
+                        </div>
+                        <div class="pt-4 text-center">
+                            <button class="btn btn-outline-dark" onclick="addToCart(<?php echo $prod['id'] ?>)">Ajouter au pannier</button>
+                        </div>
+                    </div>
+                </div> -->
+            <?php endforeach ?>
+
+
+            <div class="product-card">
+
+            </div>
+            <div class="product-card">
+
+            </div>
+            <div class="product-card">
+
+            </div>
+        </div>
+        <div class="row justify-content-center align-content-center">
+            <div class="text-center">
+                <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase golden-btn">Afficher tous</button>
+            </div>
+        </div>
+    </div>
     <div class="row d-flex justify-content-center align-items-center mt-5">
         <div class="gallery-wrapper d-flex align-items-center justify-content-center">
             <div class="gallery-text text-center">
@@ -57,7 +119,7 @@ foreach ($products as $prod) {
             </div>
         </div>
         <div class="w-100 text-center mt-5">
-            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase golden-btn">Afficher tous</button>
+            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 golden-btn text-uppercase">Afficher tous</button>
         </div>
     </div>
 </div>

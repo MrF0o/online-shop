@@ -74,9 +74,14 @@ header img {
 }
 
 .hero > button:hover, .about button:hover, .golden-btn:hover {
-    background-color: #D4A413;
+    background-color: #D4A413 !important;
     color: white;
     border-color: #D4A413;
+}
+
+.bg-dark-main {
+    background-color: #1E1E1E;
+    transition: background 200ms ease;
 }
 
 .about h3 {
@@ -116,4 +121,44 @@ header img {
     background-color: #181818 !important;
     text-align: center;
     color: #74736F;
+}
+
+.product-card:hover .overlay {
+    display: flex !important;
+    animation: fadeIn 0.5s;
+}
+
+.product-card {
+    position: relative;
+    background-color: #1E1E1E;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    transform: translatey(-50%);
+    width: 100%;
+    border-radius: 6px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.product-thumb img {
+    height: 245px;
+    width: 245px;
+}
+
+.product-price-span {
+    color: #D4A413;
 }
