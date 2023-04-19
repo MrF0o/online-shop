@@ -5,8 +5,8 @@ if (!isset($_SESSION)) {
 
 ?>
 
-<!DOCTYPE html class="h-100">
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
 <head>
 
@@ -26,7 +26,7 @@ if (!isset($_SESSION)) {
 
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 position-relative">
 
     <header class="header">
         <div class="container">

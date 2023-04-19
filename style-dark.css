@@ -43,6 +43,10 @@ header img {
     align-items: center;
 }
 
+.text-golden {
+    color: #D4A413;
+}
+
 .hero {
     height: 100%;
     display: flex;
@@ -79,6 +83,14 @@ header img {
     border-color: #D4A413;
 }
 
+input.golden-btn:focus {
+    color: white;
+}
+
+input.golden-btn:hover:focus {
+    color: white;
+}
+
 .bg-dark-main {
     background-color: #1E1E1E;
     transition: background 200ms ease;
@@ -93,8 +105,8 @@ header img {
     width: 266px;
 }
 
-.about p {
-    color: #74736F;
+.about p, .text-muted {
+    color: #74736F !important;
 }
 
 .gallery-wrapper {
@@ -161,4 +173,25 @@ header img {
 
 .product-price-span {
     color: #D4A413;
+}
+
+.login-input {
+    background-color: transparent;
+    outline: none;
+    padding: 1rem 1.5rem;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+.login-form button {
+    font-size: 24px;
+}
+
+.login-input:hover {
+    background-color: transparent !important;
+}
+
+.login-relative-img1 {
+    top: 0;
+    left: 0;
 }
