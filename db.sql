@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2023 at 02:15 PM
+-- Generation Time: Apr 21, 2023 at 12:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,6 +44,29 @@ CREATE TABLE `address` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONSHIPS FOR TABLE `admins`:
+--
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`) VALUES
+(1, 'admin', '698d51a19d8a121ce581499d7b701668');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `article`
 --
 
@@ -66,10 +89,10 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `title`, `description`, `prix`, `category_id`) VALUES
-(20, 'Test article', 'this is a description', 120, 10),
-(21, 'test article 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 350, 10),
-(22, 'Produit 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 380, 10),
-(23, 'Produit 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 120, 10);
+(24, 'Article 1', 'Suspendisse condimentum magna at posuere accumsan. Donec lorem nunc, vestibulum vel sagittis a, malesuada ut nibh. Integer a lorem lectus. Nulla massa lectus, scelerisque sit amet neque quis, cursus sodales ipsum. Nunc in nisl at justo hendrerit bibendum. Pellentesque bibendum porta nisi et tempor. Nullam leo elit, tempus eget augue eget, maximus porta nulla. Curabitur suscipit tellus vitae ullamcorper pretium. Cras at sapien eu lorem tempus condimentum vitae at risus. Vestibulum ultricies nec tellus eget semper. In in maximus quam. Curabitur pulvinar tincidunt dui, ut maximus augue molestie et. Maecenas pretium nisi eget quam molestie, blandit varius urna semper.', 120, 11),
+(25, 'Bague Exemple produit', 'Suspendisse condimentum magna at posuere accumsan. Donec lorem nunc, vestibulum vel sagittis a, malesuada ut nibh. Integer a lorem lectus. Nulla massa lectus, scelerisque sit amet neque quis, cursus sodales ipsum. Nunc in nisl at justo hendrerit bibendum. Pellentesque bibendum porta nisi et tempor. Nullam leo elit, tempus eget augue eget, maximus porta nulla. Curabitur suscipit tellus vitae ullamcorper pretium. Cras at sapien eu lorem tempus condimentum vitae at risus. Vestibulum ultricies nec tellus eget semper. In in maximus quam. Curabitur pulvinar tincidunt dui, ut maximus augue molestie et. Maecenas pretium nisi eget quam molestie, blandit varius urna semper.', 300, 12),
+(26, 'Test product', 'Suspendisse condimentum magna at posuere accumsan. Donec lorem nunc, vestibulum vel sagittis a, malesuada ut nibh. Integer a lorem lectus. Nulla massa lectus, scelerisque sit amet neque quis, cursus sodales ipsum. Nunc in nisl at justo hendrerit bibendum. Pellentesque bibendum porta nisi et tempor. Nullam leo elit, tempus eget augue eget, maximus porta nulla. Curabitur suscipit tellus vitae ullamcorper pretium. Cras at sapien eu lorem tempus condimentum vitae at risus. Vestibulum ultricies nec tellus eget semper. In in maximus quam. Curabitur pulvinar tincidunt dui, ut maximus augue molestie et. Maecenas pretium nisi eget quam molestie, blandit varius urna semper.', 35, 12),
+(27, 'Article For testing', 'Suspendisse condimentum magna at posuere accumsan. Donec lorem nunc, vestibulum vel sagittis a, malesuada ut nibh. Integer a lorem lectus. Nulla massa lectus, scelerisque sit amet neque quis, cursus sodales ipsum. Nunc in nisl at justo hendrerit bibendum. Pellentesque bibendum porta nisi et tempor. Nullam leo elit, tempus eget augue eget, maximus porta nulla. Curabitur suscipit tellus vitae ullamcorper pretium. Cras at sapien eu lorem tempus condimentum vitae at risus. Vestibulum ultricies nec tellus eget semper. In in maximus quam. Curabitur pulvinar tincidunt dui, ut maximus augue molestie et. Maecenas pretium nisi eget quam molestie, blandit varius urna semper.', 200, 12);
 
 -- --------------------------------------------------------
 
@@ -91,7 +114,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `label`) VALUES
-(10, 'test category');
+(11, 'Homme'),
+(12, 'Femme'),
+(13, 'Bagues Unisexe');
 
 -- --------------------------------------------------------
 
@@ -162,10 +187,10 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `article_id`, `path`) VALUES
-(3, 20, '../images/upload/9674e914bfb9cf4ff79ftest-img-2.png'),
-(4, 21, '../images/upload/dbd5e0ad74471bf22c21test-img.png'),
-(5, 22, '../images/upload/a9fe52f398002edd70c7image.png'),
-(6, 23, '../images/upload/b543cfaf0e3baee7217ctest-img-4.png');
+(7, 24, '../images/upload/acb9a6b1c5b4606182d5b543cfaf0e3baee7217ctest-img-4.png'),
+(8, 25, '../images/upload/6f9920846edbc98644169674e914bfb9cf4ff79ftest-img-2.png'),
+(9, 26, '../images/upload/298023b8cbcdb05d3228dbd5e0ad74471bf22c21test-img.png'),
+(10, 27, '../images/upload/55adb281fb1df8a47497a9fe52f398002edd70c7image.png');
 
 -- --------------------------------------------------------
 
@@ -196,6 +221,12 @@ CREATE TABLE `ligne_cmd` (
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -251,16 +282,22 @@ ALTER TABLE `address`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'clé primaire', AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'clé primaire', AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -278,7 +315,7 @@ ALTER TABLE `cmd`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ligne_cmd`
@@ -329,6 +366,10 @@ USE `phpmyadmin`;
 
 --
 -- Metadata for table address
+--
+
+--
+-- Metadata for table admins
 --
 
 --
