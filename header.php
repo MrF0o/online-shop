@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+include 'config.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -32,23 +34,27 @@ if (!isset($_SESSION)) {
         <div class="container">
             <div class="row p-4 align-items-center">
                 <div class="col-3">
-                    <img src="images/icons/cart.svg" id="cart">
-                    <img class="ms-5" src="images/icons/profile.svg" id="profile">
+                    <a href="cart.php">
+                        <img src="images/icons/cart.svg" id="cart">
+                    </a>
+                    <a href="membre.php">
+                        <img class="ms-5" src="images/icons/profile.svg" id="profile">
+                    </a>
                 </div>
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <div class="brand">
-                        Brand
+                        <a href="/<?php echo $dir ?>">Brand</a>
                     </div>
                     <div class="brand-desc">
                         Elegant Rings
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-end align-items-center">
-                    <img src="images/icons/search.svg" id="search">
+                    <img src="images/icons/search.svg" style="cursor: pointer;" id="search">
                 </div>
             </div>
 
-            <div class="row p-4">
+            <div class="row p-4 position-relative overflow-hidden">
                 <nav class="w-100 d-flex justify-content-center">
                     <ul class="nav-list list-unstyled d-flex">
                         <li class="nav-item mx-3">
@@ -62,6 +68,14 @@ if (!isset($_SESSION)) {
                         </li>
                     </ul>
                 </nav>
+                <div class="search-form w-100 position-absolute d-flex">
+                    <form action="results.php" method="GET">
+                        <input type="text" class="search-input position-absolute p-4 h3 overflow-hidden text-white bg-dark-main" name="s" placeholder="Chercher notre catalogue" autocomplete="off">
+                        <button type="submit" class="bg-dark-main search-btn text-dark-one position-absolute">
+                            <i class="fa-solid fa-magnifying-glass h4"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </header>

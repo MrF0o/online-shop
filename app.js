@@ -1,8 +1,19 @@
+let searchShown = false;
+
 $(document).ready(function () {
     getCartCount();
+    
+    $('#search').click(function () {
+        
+        if (searchShown) {
+            $('.search-form').css('animation', 'search-scroll-bottom 200ms forwards');
+        } else {
+            $('.search-form').css('animation', 'search-scroll-top 200ms forwards');
+        }
+
+        searchShown = !searchShown;
+    })
 })
-
-
 
 function addToCart(id) {
     const request = $.ajax({

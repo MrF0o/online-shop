@@ -45,16 +45,18 @@ if (isset($_GET['id'])) {
             <div class="title d-flex justify-content-between align-items-center">
                 <h3><?php echo htmlentities($product['title']) ?></h3>
                 <h3 class="">
-                    <span class="badge badge-lg bg-light text-dark"><?php echo htmlentities($product['prix']) ?> DT</span>
+                    <span class="badge badge-lg bg-light text-dark price-tag"><?php echo htmlentities($product['prix']) ?> DT</span>
                 </h3>
             </div>
             <div>
                 <h5 class="text-muted small pt-4">description</h5>
                 <p><?php echo htmlentities($product['description']) ?></p>
             </div>
-            <div class="mt-auto mx-auto">
-                <button class="btn btn-lg add-to-cart btn-light" onclick="addToCart(<?php echo $product['id'] ?>)">Ajouter au pannier</button>
-                <button class="btn btn-lg add-to-cart btn-dark">Acheter maintenant</button>
+            <div class="mt-auto">
+                <button class="btn btn-lg add-to-cart btn-light" onclick="addToCart(<?php echo $product['id'] ?>)">
+                    <span><i class="fa-solid fa-shopping-cart"></i></span>
+                </button>
+                <button class="btn btn-lg add-to-cart golden-btn ms-2">Acheter maintenant</button>
             </div>
         </div>
     </div>
@@ -64,7 +66,7 @@ if (isset($_GET['id'])) {
             <h3 class="h4">Tu peux aimer</h3>
             <div style="width: 60px; height: 3px;" class="bg-dark"></div>
         </div>
-        <!-- TODO: produits similaire -->
+        <!-- TODO: produits similaires -->
     </div>
 
 </div>

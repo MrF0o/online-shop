@@ -1,5 +1,5 @@
 <footer class="footer p-5 mt-auto py-3 bg-light">
-  <div class="container">
+  <div class="container mt-5">
     <span>Copyright &#169; 2023</span>
   </div>
 </footer>

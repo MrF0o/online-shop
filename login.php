@@ -60,33 +60,3 @@ if (isset($_POST['connecter'])) {
     </div>
     <?php include(__DIR__ . '/footer.php') ?>
 </div>
-
-<?php die ?>
-
-<div class="container d-flex h-100 justify-content-center align-items-center">
-    <div class="col col-md-5 bg-light p-4 rounded shadow">
-        <?php if (isset($erreur)) : ?>
-            <div class="alert alert-danger">
-                <?php
-                echo $erreur;
-                ?>
-            </div>
-        <?php endif ?>
-        <h4>Connecter a votre compte</h4>
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="email">Adresse Email</label>
-                <input type="email" name="login" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">Votre email est securisée.</small>
-            </div>
-            <div class="form-group">
-                <label for="password">Mots de passe</label>
-                <input type="password" name="pass" class="form-control" id="password" placeholder="Password">
-            </div>
-
-            <div class="mt-2">
-                <button type="submit" name="connecter" class="btn btn-outline-dark">Connecter</button>
-            </div>
-        </form>
-    </div>
-</div>

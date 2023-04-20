@@ -5,6 +5,15 @@
 ?>
 <?php include(__DIR__ . '/header.php') ?>
 
-<h3>Votre commande a été creé avec succé</h3>
+<div class="container mt-5">
+    <h3 class="alert alert-golden">Votre commande a été creé avec succé</h3>
+    <div class="text-center mt-5">
+        <!-- TODO: home page link (figure out how to get the project subdir name) -->
+        <a href="#" class="home-link p-3 text-white">
+            <i class="fa-solid  fa-arrow-left"></i>
+            <span>retourner au page d'accueil</span>
+        </a>
+    </div>
+</div>
 
 <?php include 'footer.php' ?>

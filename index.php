@@ -35,7 +35,7 @@ foreach ($products as $prod) {
         <h3>Profitez C'est L'occasion <br>
             Ou Jamais Ne Ratez Pas !</h3>
 
-        <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4">Shop Now</button>
+        <a href="results.php" class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 golden-btn text-uppercase">Shop Now</a>
     </div>
 </div>
 <div class="container">
@@ -43,7 +43,7 @@ foreach ($products as $prod) {
         <div class="col-6">
             <h3>Some big Title HERE we should convince them to buy</h3>
             <p>Repudiandae quidem dicta tenetur illo rerum eveniet veritatis sit mollitia perspiciatis autem,nisi libero commodi deleniti nemo quisquam amet consequatur accusamus harum.</p>
-            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase">explorer</button>
+            <a href="results.php" class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 golden-btn text-uppercase">explorer</a>
         </div>
         <div class="col-6 d-flex justify-content-center">
             <img src="images/image-preview-1.png">
@@ -94,7 +94,7 @@ foreach ($products as $prod) {
             </div>
         </div>
         <div class="w-100 text-center mt-5">
-            <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 golden-btn text-uppercase">Afficher tous</button>
+            <a href="results.php" class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 golden-btn text-uppercase">Afficher tous</a>
         </div>
     </div>
 </div>

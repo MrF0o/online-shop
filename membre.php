@@ -48,6 +48,12 @@ if (isset($_SESSION['login'])) {
 
 <?php include 'header.php' ?>
 
+<?php // include 'footer.php' ?>
+
+
+
+<?php //die ?>
+
 <div class="container">
     <div class="row mt-5">
         <div class="col-lg-4 mb-5">
@@ -59,15 +65,15 @@ if (isset($_SESSION['login'])) {
                 </div>
             <?php endif ?>
             <div class="">
-                <div class="h3">
+                <div class="h1">
                     Bonjour, <?php echo $membre['frst_name'] ?>!
                 </div>
-                <small>Vous pouvez modifier vos informations ici</small>
+                <div class="h5">Vous pouvez modifier vos informations ici</div>
             </div>
-            <div class="mt-3">
-                <h5>Votre adresse</h5>
-                <div class="card shadow w-100">
-                    <div class="card-body">
+            <div class="mt-5">
+                <h5 class="text-dark-one">Votre adresse</h5>
+                <div class="card bg-dark-main shadow w-100">
+                    <div class="card-body text-white">
                         <div>
                             <span>Votre adresse est vide!</span>
                         </div>
@@ -76,35 +82,35 @@ if (isset($_SESSION['login'])) {
                         </div>
                     </div>
                 </div>
-                <h5 class="mt-3">Autres informations</h5>
-                <div class="card w-100">
+                <h5 class="mt-5 text-dark-one">Autres informations</h5>
+                <div class="card w-100 text-white bg-dark-main">
                     <div class="card-body">
                         <form action="#" method="POST">
                             <div class="form-group">
-                                <label for="nom">Nom:</label>
-                                <input type="text" name="nom" value="<?php echo htmlentities($membre['last_name']) ?>" class="form-control" id="nom" placeholder="Entrer votre Nom">
+                                <label for="nom" class="text-dark-one">Nom:</label>
+                                <input type="text" name="nom" value="<?php echo htmlentities($membre['last_name']) ?>" class="form-control golden-input" id="nom" placeholder="Entrer votre Nom">
                             </div>
-                            <div class="form-group">
-                                <label for="prenom">Prenom:</label>
-                                <input type="text" name="prenom" value="<?php echo htmlentities($membre['frst_name']) ?>" class="form-control" id="prenom" placeholder="Entrer votre Prenom">
+                            <div class="form-group mt-2">
+                                <label for="prenom" class="text-dark-one">Prenom:</label>
+                                <input type="text" name="prenom" value="<?php echo htmlentities($membre['frst_name']) ?>" class="form-control golden-input" id="prenom" placeholder="Entrer votre Prenom">
                             </div>
-                            <div class="form-group">
-                                <label for="login">Adresse E-mail:</label>
-                                <input type="email" name="login" value="<?php echo htmlentities($membre['email']) ?>" class="form-control" id="login" placeholder="Entrer votre E-mail">
+                            <div class="form-group mt-2">
+                                <label for="login" class="text-dark-one">Adresse E-mail:</label>
+                                <input type="email" name="login" value="<?php echo htmlentities($membre['email']) ?>" class="form-control golden-input" id="login" placeholder="Entrer votre E-mail">
                             </div>
-                            <div class="form-group">
-                                <label for="password">Mot de passe :</label>
-                                <input type="pass" name="pass" class="form-control" id="password" placeholder="Entrer un mot de passe">
+                            <div class="form-group mt-2">
+                                <label for="password" class="text-dark-one">Mot de passe :</label>
+                                <input type="pass" name="pass" class="form-control golden-input" id="password" placeholder="Entrer un mot de passe">
                             </div>
 
                             <hr>
                             <div class="form-group">
-                                <label for="password">Mot de passe actuel:</label>
-                                <input type="pass" name="pass_act" class="form-control" id="password" placeholder="">
+                                <label for="password" class="text-dark-one">Mot de passe actuel:</label>
+                                <input type="pass" name="pass_act" class="form-control golden-input" id="password" placeholder="">
                             </div>
 
                             <div class="mt-2">
-                                <button type="submit" name="update" class="btn btn-outline-dark">Enregistrer</button>
+                                <button type="submit" name="update" class="btn btn-outline-dark golden-btn">Enregistrer</button>
                             </div>
                         </form>
                     </div>
