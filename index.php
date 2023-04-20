@@ -3,15 +3,11 @@
 include 'config.php';
 
 $query1 = "SELECT * from article ORDER BY RAND() LIMIT 4";
-$query2 = "SELECT * from categories";
 
 $images = [];
 
 $res = mysqli_query($db, $query1);
 $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-$res = mysqli_query($db, $query2);
-$categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 foreach ($products as $prod) {
     $q = 'SELECT path FROM images WHERE article_id=' . $prod['id'];

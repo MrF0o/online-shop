@@ -9,7 +9,7 @@ include '../config.php';
 $msg = [];
 
 // ken mch logged in wla mahouch admin redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
 
     if (isset($_POST['add_cat'])) {
         $msg['type'] = 'cat';

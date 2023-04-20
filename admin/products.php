@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 include '../config.php';
 
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
 
     $sql = 'SELECT * from article';
     $res = mysqli_query($db, $sql);

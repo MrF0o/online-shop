@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
 } else {
     header('Location: login.php');
 }

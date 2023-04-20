@@ -5,6 +5,11 @@ if (!isset($_SESSION)) {
 
 include 'config.php';
 
+$query2 = "SELECT * from categories";
+
+$res = mysqli_query($db, $query2);
+$categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,15 +62,12 @@ include 'config.php';
             <div class="row p-4 position-relative overflow-hidden">
                 <nav class="w-100 d-flex justify-content-center">
                     <ul class="nav-list list-unstyled d-flex">
-                        <li class="nav-item mx-3">
-                            <a href="#">Homme</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a href="#">Femme</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a href="#">Mixtes</a>
-                        </li>
+
+                        <?php foreach ($categories as $cat) : ?>
+                            <li class="nav-item mx-3">
+                                <a href="category.php?category=<?php echo $cat['id'] ?>"><?php echo $cat['label'] ?></a>
+                            </li>
+                        <?php endforeach ?>
                     </ul>
                 </nav>
                 <div class="search-form w-100 position-absolute d-flex">
