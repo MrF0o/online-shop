@@ -37,14 +37,22 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
     <header class="header">
         <div class="container">
-            <div class="row p-4 align-items-center">
-                <div class="col-3">
-                    <a href="cart.php">
-                        <img src="images/icons/cart.svg" id="cart">
-                    </a>
-                    <a href="membre.php">
-                        <img class="ms-5" src="images/icons/profile.svg" id="profile">
-                    </a>
+            <div class="row p-4">
+                <div class="col-3 row align-items-center">
+                    <div class="d-flex align-items-center">
+                        <a href="cart.php">
+                            <img src="images/icons/cart.svg" id="cart">
+                        </a>
+                        <?php if (isset($_SESSION['login'])) : ?>
+                            <a href="membre.php" class="ms-3">
+                                <img class="ms-5" src="images/icons/profile.svg" id="profile">
+                            </a>
+                        <?php else : ?>
+                            <a href="login.php" class="ms-3">
+                                <i class="h3 p-0 m-0 text-golden fa-sharp fa-solid fa-right-to-bracket"></i>
+                            </a>
+                        <?php endif ?>
+                    </div>
                 </div>
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <div class="brand">
@@ -55,7 +63,9 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-end align-items-center">
-                    <img src="images/icons/search.svg" style="cursor: pointer;" id="search">
+                    <div class="d-flex align-items-center">
+                        <img src="images/icons/search.svg" style="cursor: pointer;" id="search">
+                    </div>
                 </div>
             </div>
 
