@@ -184,7 +184,7 @@ input.golden-btn:hover:focus {
     width: 100%;
 }
 
-.brand > a {
+a {
     text-decoration: none;
     color: white;
 }
