@@ -13,6 +13,10 @@ $(document).ready(function () {
 
         searchShown = !searchShown;
     })
+
+    $('#close-notif').click(function () {
+        $('.notif').addClass('d-none');
+    })
 })
 
 function addToCart(id) {

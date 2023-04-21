@@ -39,6 +39,7 @@ header img {
 
 .hero-wrapper {
     background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/hero.jpg');
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -46,6 +47,13 @@ header img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.notif {
+    background-color: #74736F;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.1rem;
 }
 
 .text-golden {

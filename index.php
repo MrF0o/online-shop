@@ -78,7 +78,7 @@ foreach ($products as $prod) {
         </div>
         <div class="row justify-content-center align-content-center">
             <div class="text-center">
-                <button class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase golden-btn">Afficher tous</button>
+                <a href="results.php" class="btn btn-outline-primary rounded-pill btn-lg px-3 mt-4 text-uppercase golden-btn">Afficher tous</a>
             </div>
         </div>
     </div>

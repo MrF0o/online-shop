@@ -36,6 +36,12 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
 <body class="d-flex flex-column h-100 position-relative">
 
     <header class="header">
+        <div class="notif">
+            <p class="p-2 shadow">
+                <span>Durée limitée, obtenez <u>50% de réduction</u> sur votre premier achat.</span>
+                <span id="close-notif" class="px-3 ms-5 btn"><i class="fa-regular fa-x close-icon"></i></span>
+            </p>
+        </div>
         <div class="container">
             <div class="row p-4">
                 <div class="col-3 row align-items-center">
