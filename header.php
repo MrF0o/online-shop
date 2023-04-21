@@ -46,8 +46,12 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
             <div class="row p-4">
                 <div class="col-3 row align-items-center">
                     <div class="d-flex align-items-center">
-                        <a href="cart.php">
+                        <a href="cart.php" class="position-relative">
                             <img src="images/icons/cart.svg" id="cart">
+                            <span style="background-color: #D4A413;" id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-golden">
+                                0
+                                <span class="visually-hidden">dans le Pannier</span>
+                            </span>
                         </a>
                         <?php if (isset($_SESSION['login'])) : ?>
                             <a href="membre.php" class="ms-3">
@@ -55,7 +59,7 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                             </a>
                         <?php else : ?>
                             <a href="login.php" class="ms-3">
-                                <i class="h3 p-0 m-0 text-golden fa-sharp fa-solid fa-right-to-bracket"></i>
+                                <i class="ms-5 h3 p-0 m-0 text-golden fa-sharp fa-solid fa-right-to-bracket"></i>
                             </a>
                         <?php endif ?>
                     </div>

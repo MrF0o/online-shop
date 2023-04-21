@@ -48,7 +48,7 @@ foreach ($products as $prod) {
     <div class="row products justify-content-center align-content-center mt-5">
         <div class="row justify-content-center align-content-center">
             <div class="text-center">
-                <h3 class="text-uppercase">à la mode maintenant</h3>
+                <h3 class="text-uppercase fw-light">à la mode maintenant</h3>
             </div>
         </div>
         <div class="row justify-content-center align-content-center gap-5 mt-3">
