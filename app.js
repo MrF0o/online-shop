@@ -20,12 +20,16 @@ $(document).ready(function () {
 })
 
 function addToCart(id) {
+
+    const quantity = $('.quantity-input').val() || 1;
+
     const request = $.ajax({
         url: 'cart.php?is_json=true',
         method: 'POST',
         data: {
             action: 'addToCart',
             product: id,
+            quantity: quantity >= 1 ? quantity : 1
         }
     })
 

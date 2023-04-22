@@ -2,7 +2,12 @@
 // -----------
 // Pannier
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include 'config.php';
+include 'functions.php';
 
 // najmou nsta3mlou cookies ala 5atr hata utilisateur
 // ma 3ndach compte ynajm ykoun 3nda pannier
@@ -28,21 +33,33 @@ if (isset($_GET['is_json'])) {
 
     if ($_POST['action'] == 'addToCart') {
 
-        if (!in_array($_POST['product'], $old_cart['products'])) {
-            array_push($old_cart['products'], $_POST['product']);
-            setcookie('cart', json_encode($old_cart), time() + 3600);
+        $prod = findObjectById($_POST['product'], $old_cart['products']);
+
+        if ($prod == -1) {
+            array_push($old_cart['products'], [
+                'id' => $_POST['product'],
+                'quantity' => $_POST['quantity']
+            ]);
+        } else {
+            $old_cart['products'][$prod] = [
+                'id' => $old_cart['products'][$prod]['id'],
+                'quantity' => $_POST['quantity']
+            ];
         }
 
+        setcookie('cart', json_encode($old_cart), time() + 3600);
 
         header('Content-Type: application/json');
         echo json_encode($old_cart);
         exit; // mouch lazem HTML 5atr deja handled 
-    } 
-    
+    }
+
     if ($_POST['action'] == 'delCartItem') {
 
-        if (($key = array_search($_POST['product'], $old_cart['products'])) !== false) {
-            unset($old_cart['products'][$key]);
+        $prod = findObjectById($_POST['product'], $old_cart['products']);
+        
+        if ($prod > -1) {
+            unset($old_cart['products'][$prod]);
             setcookie('cart', json_encode($old_cart), time() + 3600);
         }
 
@@ -66,18 +83,27 @@ if (isset($_GET['is_json'])) {
     if (isset($_COOKIE['cart'])) {
         $cart = json_decode($_COOKIE['cart'], true);
         if (count($cart['products'])) {
-            $IDs = implode(',', array_map('intval', $cart['products']));
+            $IDs = implode(',', array_map(function ($p) {
+                return intval($p['id']);
+            }, $cart['products']));
+
             $sql = "SELECT article.*, images.path FROM article INNER JOIN images ON images.article_id=article.id WHERE article.id IN ($IDs)";
             $res = mysqli_query($db, $sql);
 
             $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+            $total = 0;
 
-            $products =  array_map(function ($p) {
+            $products =  array_map(function ($p) use ($cart) {
+                global $total;
                 $p['path'] = rmPrefix($p['path']);
+                $total += (int)$p['prix'] * (int)($cart['products'][findObjectById($p['id'], $cart['products'])]['quantity']);
                 return $p;
             }, $products);
         }
     }
+
+    $query = "SELECT *,  address.address_line_1, address.address_line_2, address.postal_code FROM clients INNER JOIN address ON address.id=clients.address_id";
+    $membre = mysqli_fetch_assoc(mysqli_query($db, $query));
 }
 ?>
 
@@ -86,15 +112,18 @@ if (isset($_GET['is_json'])) {
 <main class="container mt-5">
     <div class="row justify-content-center">
 
-        <h4>Votre Pannier</h4>
+        <h4>
+            <i class="fa fa-shopping-cart p-2"></i>
+            Votre Pannier
+        </h4>
 
         <div class="row gap-3">
-            <div class="card col">
+            <div class="card bg-dark-main col">
                 <div class="card-body">
 
                     <div class="table-responsive ">
-                        <table class="table table-hover">
-                            <thead>
+                        <table class="table">
+                            <thead class="text-dark-one text-center">
                                 <th class="col">-</th>
                                 <th class="col">Produit</th>
                                 <th class="col">Prix</th>
@@ -104,23 +133,26 @@ if (isset($_GET['is_json'])) {
                             <tbody>
                                 <?php if (isset($products)) : ?>
                                     <?php foreach ($products as $p) : ?>
-                                        <tr class="">
+                                        <tr class="text-white">
                                             <td scope="row"><img height="50px" src="<?php echo $p['path'] ?>"></td>
-                                            <td scope="row">
-                                                <div class="row align-items-center">
-                                                    <div class="col-auto">
-                                                        <h6 class="text-dark my-auto"><?php echo $p['title'] ?></h6>
-                                                    </div>
-                                                </div>
+                                            <td scope="row" class="align-middle">
+
+                                                <h6 class="text-white my-auto"><?php echo $p['title'] ?></h6>
+
                                             </td>
-                                            <td>
-                                                <p><?php echo $p['prix'] ?> DT</p>
+                                            <td class="align-middle">
+                                                <p class="my-auto"><?php echo $p['prix'] ?> DT</p>
                                             </td>
-                                            <td>
-                                                <input type="number" value="1" class="form-control">
+                                            <td class="align-middle">
+                                                <input 
+                                                    type="number" 
+                                                    value="<?php isset($cart) ? print($cart['products'][findObjectById($p['id'], $cart['products'])]['quantity']) : print(1) ?>"
+                                                    class="form-control golden-input quantity-input" 
+                                                    onchange="addToCart(<?php echo $p['id'] ?>)"    
+                                                />
                                             </td>
-                                            <td>
-                                                <button class="btn btn-danger" onclick="delCartItem(<?php echo $p['id'] ?>)">
+                                            <td class="text-center align-middle">
+                                                <button class="btn btn-outline-danger" onclick="delCartItem(<?php echo $p['id'] ?>)">
                                                     <i class="fa-regular fa-trash-can"></i>
                                                 </button>
                                             </td>
@@ -133,18 +165,37 @@ if (isset($_GET['is_json'])) {
 
                 </div>
             </div>
-            <div class="card col-md-4">
+            <div class="card col-md-4 checkout-card">
                 <!-- baad tw njibou l'adresse courante mta client -->
                 <div class="card-body">
                     <div>
-                        <h5>Nom d'utilisateur</h5>
+                        <h5><?php echo $membre['frst_name'] . ' ' . $membre['last_name'] ?></h5>
                     </div>
                     <small class="fw-semibold">Adresse</small>
                     <div class="py-2">
-                        <p>Addresse ligne 1 <br> Gabes 6000 Some place</p>
+                        <p>
+                            <?php echo $membre['address_line_1'] ?>
+                            <br>
+                            <?php echo $membre['address_line_2'] ?>
+                            <?php echo $membre['postal_code'] ?>
+                        </p>
+                        <a class="hover" href="modif-adresse.php">
+                            <i class="fa fa-link"></i>
+                            modifier addresse
+                        </a>
+                    </div>
+                    <div class="mb-2">
+                        <h3>Total TTC</h3>
+                        <?php
+                        if (isset($total)) {
+                            echo "<span class=\"h5 fw-light\">$total DT</span>";
+                        } else {
+                            echo "<span class=\"h5 fw-light\">0 DT</span>";
+                        }
+                        ?>
                     </div>
                     <div>
-                        <a class="btn btn-success w-100 btn-lg" href="create-cmd.php">Passer la commande</a>
+                        <a class="btn btn-success w-100 btn-lg golden-btn bg-dark-main" href="create-cmd.php">Passer la commande</a>
                     </div>
                 </div>
             </div>

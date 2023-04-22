@@ -17,6 +17,10 @@ header img {
     margin: 0 !important;
 }
 
+.brand a {
+    text-decoration: 0;
+}
+
 .brand-desc {
     color: #D4A413;
     font-size: 20px;
@@ -32,13 +36,13 @@ header img {
     color: inherit;
 }
 
-.nav-item:hover > a {
+.nav-item:hover>a {
     color: rgba(255, 255, 255, 0.6);
     transition: color 200ms ease-in-out;
 }
 
 .hero-wrapper {
-    background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/hero.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -69,14 +73,14 @@ header img {
     text-transform: uppercase;
 }
 
-.hero > h6 {
+.hero>h6 {
     color: white;
     font-size: 20px;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-.hero > h3 {
+.hero>h3 {
     color: white;
     padding: 0 !important;
     margin: 0 !important;
@@ -85,12 +89,16 @@ header img {
     font-size: 48px;
 }
 
-.about button, .hero > button, .golden-btn {
+.about button,
+.hero>button,
+.golden-btn {
     border-color: #D4A413;
     color: #D4A413;
 }
 
-.hero > button:hover, .about button:hover, .golden-btn:hover {
+.hero>button:hover,
+.about button:hover,
+.golden-btn:hover {
     background-color: #D4A413 !important;
     color: white;
     border-color: #D4A413;
@@ -118,12 +126,13 @@ input.golden-btn:hover:focus {
     width: 266px;
 }
 
-.about p, .text-muted {
+.about p,
+.text-muted {
     color: #74736F !important;
 }
 
 .gallery-wrapper {
-    background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/gallery.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/gallery.png');
     background-repeat: no-repeat;
     background-size: cover;
     aspect-ratio: 1 / 1;
@@ -133,11 +142,11 @@ input.golden-btn:hover:focus {
     box-shadow: 17px 1px 80px 2px rgba(0, 0, 0, 0.7);
 }
 
-.gallery-text > h2 {
+.gallery-text>h2 {
     font-size: 38px;
 }
 
-.gallery-text > h4 {
+.gallery-text>h4 {
     font-size: 24px;
     color: #D4A413;
 }
@@ -174,6 +183,7 @@ input.golden-btn:hover:focus {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -202,11 +212,24 @@ a {
     color: white;
 }
 
+a.hover {
+    text-decoration: none;
+    color: white;
+    transition: all .4s ease-in-out, box-shadow .4s ease-in-out;
+    padding: 0.25rem .75rem;
+}
+
+a.hover:hover {
+    text-decoration: underline; 
+    box-shadow: inset 200px 0 0 0 rgba(126, 101, 24, 0.8);
+    color: white;
+}
+
 .search-btn {
     border: none;
     z-index: 2;
     right: 0;
-    top: 50%;
+    top: 1000%;
     transform: translateY(-50%);
     right: 2rem;
 }
@@ -220,7 +243,7 @@ a {
 
 @keyframes search-scroll-bottom {
     to {
-        top: 100%;
+        top: 1000%;
         opacity: 0;
     }
 }
@@ -269,7 +292,8 @@ a {
     color: #1E1E1E !important;
 }
 
-.golden-input, .golden-input:focus {
+.golden-input,
+.golden-input:focus {
     border: 2px solid #D4A413;
     background-color: #1E1E1E;
     color: white;
@@ -303,4 +327,33 @@ a {
     .search-product-main {
         margin-left: 0;
     }
+}
+
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #74736F;
+    opacity: 1;
+    /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #74736F;
+}
+
+.form-control::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #74736F;
+}
+
+.checkout-card {
+    color: white;
+    background: linear-gradient(45deg, rgba(30, 30, 30, 1) 8%, rgba(85, 71, 27, 0.5177172919949229) 34%, rgba(126, 101, 24, 0.7278013256083684) 60%, rgba(169, 133, 22, 0.45329152168679976) 77%, rgba(212, 164, 19, 0.35525230600052526) 100%);
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
+    transition: background-color 1s;
+}
+
+.checkout-card:hover {
+    background-color: rgba(126, 101, 24, 0.7278013256083684);
 }

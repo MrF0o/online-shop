@@ -36,7 +36,7 @@
   // Our js start: JQuery
 
   // ----------- DRAG & DROP -------------
-  $('#preview-img').hide();
+  $('#preview-img.add').hide();
   $('.drop-wrapper').on(
     'dragover',
     function (e) {
@@ -68,7 +68,7 @@
   $('#product-image').change(function (e) {
     const [file] = this.files;
     $('#preview-img').attr('src', URL.createObjectURL(file));
-    $('#preview-img').show();
+    $('#preview-img.add').show();
   })
 
 })();
