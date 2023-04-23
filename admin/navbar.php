@@ -31,11 +31,6 @@
                                     <i class="lni lni-user"></i> Profile
                                 </a>
                             </li>
-                            <li>
-                                <a href="logout.php" class="bg-danger text-white">
-                                    <i class="lni lni-exit"></i> Logout
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <!-- profile end -->

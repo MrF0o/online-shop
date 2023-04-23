@@ -4,9 +4,12 @@ if (!isset($_SESSION)) {
 }
 
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     
 } else {
+    // juste test
+    $_SESSION['login'] = 'fake';
+    $_SESSION['is_admin'] = 'fake';
     header('Location: login.php');
 }
 

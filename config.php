@@ -7,8 +7,6 @@ $db_host = 'localhost';
 
 $site_name = "Brand";
 
-$dir = basename(__DIR__);
-
 // connexion au serveur mysql
 // utiliser cette instance dans tout les fichier
 $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name);

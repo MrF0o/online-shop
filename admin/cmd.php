@@ -3,13 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include '../config.php';
-
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['is_admin'])) {
-
-    $cmd = mysqli_fetch_all(mysqli_query($db, "SELECT * FROM cmd"), MYSQLI_ASSOC);
-
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
 } else {
     header('Location: login.php');
 }
@@ -33,7 +28,7 @@ if (isset($_SESSION['is_admin'])) {
             <table class="table">
                 <thead>
                     <th>#</th>
-                    <th>client ID</th>
+                    <th>client</th>
                     <th>date</th>
                     <th>Total</th>
                     <th class="text-center">Action</th>

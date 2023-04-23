@@ -4,32 +4,8 @@ if (!isset($_SESSION)) {
 }
 
 // ken deja logged in redirecti lel dashboard
-if (isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     header('Location: dashboard.php');
-}
-
-include '../config.php';
-
-if (isset($_POST['connecter'])) {
-    if (!empty($_POST['login']) && !empty($_POST['pass'])) {
-        $user = mysqli_escape_string($db, $_POST['login']);
-        $pass = mysqli_escape_string($db, md5($_POST['pass']));
-
-        $sql = "SELECT * FROM admins WHERE username='$user' AND password='$pass'";
-        $res = mysqli_query($db, $sql);
-
-        if (mysqli_num_rows($res) > 0) {
-            $membre = mysqli_fetch_assoc($res);
-
-            $_SESSION['is_admin'] = $user;
-            header('Location: dashboard.php');
-            exit();
-        } else {
-            $erreur = "veuillez vérifier votre username ou mot de passe";
-        }
-    } else {
-        $erreur = 'Au moins un des champs obligatoire est vide.';
-    }
 }
 
 ?>
@@ -81,31 +57,20 @@ if (isset($_POST['connecter'])) {
                             <h6 class="mb-15">Login</h6>
                             <p class="text-sm mb-25">
                                 L'administrateur doit être créé manuellement pour des raisons de sécurité
-                                <span>
-                                    username: <b>admin</b>,
-                                    password: <b>111</b>
-                                </span>
                             </p>
-                            <?php if (isset($erreur)) : ?>
-                                <div>
-                                    <span class="alert alert-danger">
-                                        <?php echo $erreur ?>
-                                    </span>
-                                </div>
-                            <?php endif ?>
-                            <form action="" method="POST">
+                            <form action="#">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label>Username</label>
-                                            <input type="text" placeholder="Username" name="login" />
+                                            <label>Email</label>
+                                            <input type="email" placeholder="Email" />
                                         </div>
                                     </div>
                                     <!-- end col -->
                                     <div class="col-12">
                                         <div class="input-style-1">
                                             <label>Password</label>
-                                            <input type="password" placeholder="Password" name="pass" />
+                                            <input type="password" placeholder="Password" />
                                         </div>
                                     </div>
 
@@ -116,7 +81,7 @@ if (isset($_POST['connecter'])) {
                             justify-content-center
                             flex-wrap
                           ">
-                                            <button type="submit" name="connecter" class="
+                                            <button class="
                               main-btn
                               primary-btn
                               btn-hover

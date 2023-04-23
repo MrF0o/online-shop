@@ -43,48 +43,47 @@ if (isset($_POST['inscription'])) {
 }
 ?>
 
-
 <?php include(__DIR__ . '/header.php') ?>
 
-<div class="container position-relative ">
-    <div class="wrapper d-flex justify-content-center mt-5 mb-5 overflow-hidden">
-        <div class="login-form col-md-7">
-            <div class="h1">
-                <span class="text-golden"></span> <span>Creer un Compte C'est Gratuit!</span>
+
+<div class="container d-flex h-100 justify-content-center align-items-center">
+    <div class="col col-md-5 bg-light p-4 rounded shadow">
+        <?php if (isset($erreur)) : ?>
+            <div class="alert alert-danger">
+                <?php
+                echo $erreur;
+                ?>
+            </div>
+        <?php endif ?>
+        <h4>Inscription à l'espace membre :</h4>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrer votre Nom">
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom:</label>
+                <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Entrer votre Prenom">
+            </div>
+            <div class="form-group">
+                <label for="login">Adresse E-mail:</label>
+                <input type="email" name="login" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Entrer votre E-mail">
+                <small id="emailHelp" class="form-text text-muted">Votre email est securisée.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="pass" name="pass" class="form-control" id="password" placeholder="Entrer un mot de passe">
+            </div>
+            <div class="form-group">
+                <label for="password">Confirmation du mot de passe :</label>
+                <input type="password" name="pass_confirm" class="form-control" id="password" placeholder="Confirmation de mot de passe">
             </div>
 
-            <div class="mt-5">
-                <form action="" method="POST">
-                    <div class="form-group mt-2 mt-md-4 d-flex flex-column justify-content-center">
-                        <label class="sr-only" for="nom">Nom</label>
-                        <input type="text" name="nom" class="login-input golden-btn h3" id="nom" placeholder="Entrer votre Nom">
-                    </div>
-                    <div class="form-group mt-2 mt-md-4 d-flex flex-column justify-content-center">
-                        <label class="sr-only" for="prenom">Prenom</label>
-                        <input type="text" name="prenom" class="login-input golden-btn h3" id="prenom" placeholder="Entrer votre Prenom">
-                    </div>
-                    <div class="form-group mt-2 mt-md-4 d-flex flex-column justify-content-center">
-                        <label for="email" class="sr-only">Adresse Email</label>
-                        <input type="email" name="login" class="login-input golden-btn h3" id="email" aria-describedby="emailHelp" placeholder="Adresse Email">
-                        <small id="emailHelp" class="form-text text-muted">Votre email est securisée.</small>
-                    </div>
-                    <div class="form-group mt-2 mt-md-4 d-flex flex-column justify-content-center">
-                        <label for="password" class="sr-only">Mots de passe</label>
-                        <input type="password" name="pass" class="login-input golden-btn h3" id="password" placeholder="Mots de passe">
-                    </div>
-                    <div class="form-group mt-2 mt-md-4 d-flex flex-column justify-content-center">
-                        <label for="password" class="sr-only">Confirmation du mot de passe :</label>
-                        <input type="password" name="pass_confirm" class="login-input golden-btn h3" id="password" placeholder="Confirmation de mot de passe">
-                    </div>
-
-                    <div class="mt-2 mt-md-4">
-                        <button type="submit" name="inscription" class="btn btn-outline-dark golden-btn rounded-pill">Connecter</button>
-                    </div>
-                </form>
+            <div class="mt-2">
+                <button type="submit" name="inscription" class="btn btn-outline-dark">Inscription</button>
             </div>
-
-        </div>
-        <img src="images/shapes.svg" class="login-relative-img1 position-absolute z-3 d-none d-lg-block">
+        </form>
     </div>
-    <?php include(__DIR__ . '/footer.php') ?>
 </div>
+
+<?php include(__DIR__ . '/footer.php') ?>

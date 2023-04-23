@@ -9,7 +9,7 @@ include '../config.php';
 // tfasa5 kol chy based on $_GET
 
 // ken mch logged in wla mch admin redirecti lel login
-if (isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     if ($_GET['type'] == 'user') {
         $table = 'clients';
     } elseif ($_GET['type'] == 'prod') {

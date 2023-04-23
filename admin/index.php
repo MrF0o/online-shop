@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
     header('Location: dashboard.php');
 } else {
     header('Location: login.php');
