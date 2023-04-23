@@ -9,7 +9,7 @@ include '../config.php';
 $msg = [];
 
 // ken mch logged in wla mahouch admin redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
 
     if (isset($_POST['add_cat'])) {
         $msg['type'] = 'cat';
@@ -142,7 +142,7 @@ if ($_GET['type'] == 'produit') {
                             Glisser une image, ou <span class="text-primary">naviguer</span>
                         </div>
                         <div class="p-img-preview">
-                            <img src="" id="preview-img">
+                            <img src="" id="preview-img" class="add">
                         </div>
                         <input type="file" name="product_image" id="product-image" hidden>
                     </label>

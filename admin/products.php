@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 include '../config.php';
 
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
 
     $sql = 'SELECT * from article';
     $res = mysqli_query($db, $sql);
@@ -51,10 +51,10 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
                                 <td class="min-width"><?php echo $p['prix'] ?> TD</td>
                                 <td class="min-width">
                                     <div class="d-flex">
-                                        <a href="delete.php?type=prod&id=<?php echo $p['id'] ?>" class="d-block btn btn-danger btn-sm me-1">
+                                        <a href="delete.php?type=prod&id=<?php print($p['id']) ?>" class="d-block btn btn-danger btn-sm me-1">
                                             Supprimer
                                         </a>
-                                        <a href="#" class="d-block btn btn-success btn-sm">
+                                        <a href="modifier.php?type=produit&id=<?php print($p['id']) ?>" class="d-block btn btn-success btn-sm">
                                             Modifier
                                         </a>
                                     </div>

@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 include '../config.php';
 
 // ken mch logged in redirecti lel login
-if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
+if (isset($_SESSION['is_admin'])) {
     $sql = 'SELECT * from categories';
     $res = mysqli_query($db, $sql);
     $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
@@ -44,10 +44,10 @@ if (isset($_SESSION['login']) && isset($_SESSION['is_admin'])) {
                                 <td class="w-100 min-width"><?php echo $c['label'] ?></td>
                                 <td class="min-width">
                                     <div class="d-flex">
-                                        <a href="delete.php?type=cat&id=<?php echo $c['id'] ?>" class="d-block btn btn-danger btn-sm me-1">
+                                        <a href="delete.php?type=cat&id=<?php print($c['id']) ?>" class="d-block btn btn-danger btn-sm me-1">
                                             Supprimer
                                         </a>
-                                        <a href="#" class="d-block btn btn-success btn-sm">
+                                        <a href="modifier.php?type=categorie&id=<?php print($c['id']) ?>" class="d-block btn btn-success btn-sm">
                                             Modifier
                                         </a>
                                     </div>
