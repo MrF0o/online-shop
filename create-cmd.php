@@ -2,6 +2,10 @@
 
 include 'config.php';
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if (isset($_SESSION['login'])) {
     if (isset($_COOKIE['cart'])) {
         $cart = json_decode($_COOKIE['cart'], true);

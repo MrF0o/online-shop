@@ -12,8 +12,7 @@ include '../config.php';
 // ken mch logged in redirecti lel login
 if (isset($_SESSION['is_admin'])) {
 
-    $cmd = mysqli_fetch_all(mysqli_query($db, "SELECT * FROM cmd"), MYSQLI_ASSOC);
-
+    $cmd = mysqli_fetch_all(mysqli_query($db, "SELECT cmd.id, address.address_line_1, date FROM cmd INNER JOIN address ON address.id=cmd.address_id"), MYSQLI_ASSOC);
 } else {
     header('Location: login.php');
 }
@@ -37,28 +36,36 @@ if (isset($_SESSION['is_admin'])) {
             <table class="table">
                 <thead>
                     <th>#</th>
-                    <th>client ID</th>
+                    <th>Address</th>
                     <th>date</th>
                     <th>Total</th>
                     <th class="text-center">Action</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="min-width">1</td>
-                        <td class="min-width">Ali</td>
-                        <td class="min-width">28/03/2023</td>
-                        <td class="min-width">750DT</td>
-                        <td class="min-width">
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="d-block btn btn-danger btn-sm me-1">
-                                    Supprimer
-                                </a>
-                                <a href="#" class="d-block btn btn-success btn-sm">
-                                    Afficher
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php foreach ($cmd as $c) : ?>
+
+                        <?php
+                        // calculer total
+                        $total = mysqli_fetch_all(mysqli_query($db, "SELECT SUM(quantity) * article.prix FROM ligne_cmd INNER JOIN article ON article.id=ligne_cmd.article_id WHERE ligne_cmd.cmd_id={$c['id']}"));
+                        ?>
+
+                        <tr>
+                            <td class="min-width"><?php echo $c['id'] ?></td>
+                            <td class="min-width"><?php echo $c['address_line_1'] ?></td>
+                            <td class="min-width"><?php echo $c['date'] ?></td>
+                            <td class="min-width"><?php echo $total[0][0] ?></td>
+                            <td class="min-width">
+                                <div class="d-flex justify-content-center">
+                                    <a href="delete.php?type=cmd&id=<?php print($c['id']) ?>" class="d-block btn btn-danger btn-sm me-1">
+                                        Supprimer
+                                    </a>
+                                    <a href="afficher_cmd.php?id=<?php print($c['id']) ?>" class="d-block btn btn-success btn-sm">
+                                        Afficher
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

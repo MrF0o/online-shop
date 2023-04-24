@@ -23,6 +23,8 @@ if (isset($_SESSION['is_admin'])) {
         $table = 'article';
     } elseif ($_GET['type'] == 'cat') {
         $table = 'categories';
+    } elseif ($_GET['type'] == 'cmd' || $_GET['type'] == 'cmd_aff') {
+        $table = 'cmd';
     } else {
         $table = NULL;
     }
@@ -32,6 +34,9 @@ if (isset($_SESSION['is_admin'])) {
 
         $sql = "DELETE FROM $table WHERE id=$id";
         mysqli_query($db, $sql);
+
+        if ($_GET['type'] == 'cmd_aff')
+            header('Location: cmd.php');
 
         // redirect back
         header('Location: ' . $_SERVER['HTTP_REFERER']);
