@@ -34,6 +34,6 @@ if (isset($_SESSION['is_admin'])) {
     } else {
         echo 'error';
     }
-} else { .
+} else {
     header('Location: login.php');
 }

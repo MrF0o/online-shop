@@ -5,6 +5,22 @@ if (!isset($_SESSION)) {
 
 include 'config.php';
 
+if (isset($_SESSION['login'])) {
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        // redirect back
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } else {
+        header('Location: membre.php');
+    }
+}
+
+
+if (isset($_POST['continue']) && !empty($_POST['continue'])) {
+    $redirect = "cart.php";
+} else {
+    $redirect = "index.php";
+}
+
 if (isset($_POST['connecter'])) {
     if (!empty($_POST['login']) && !empty($_POST['pass'])) {
         $email = mysqli_escape_string($db, $_POST['login']);
@@ -17,7 +33,8 @@ if (isset($_POST['connecter'])) {
             $membre = mysqli_fetch_assoc($res);
 
             $_SESSION['login'] = $email;
-            header('Location: membre.php');
+
+            header('Location: ' . $redirect);
             exit();
         } else {
             $erreur = "veuillez vérifier votre e-mail ou mot de passe ou <a href=\"register.php\">créer un compte</a>";
@@ -48,11 +65,17 @@ if (isset($_POST['connecter'])) {
                         <label for="password" class="sr-only">Mots de passe</label>
                         <input type="password" name="pass" class="login-input golden-btn h3" id="password" placeholder="Mots de passe">
                     </div>
+                    <input type="text" value="<?php isset($msg) ? print('true') : print('') ?>" hidden name="continue">
 
                     <div class="mt-2 mt-md-4">
                         <button type="submit" name="connecter" class="btn btn-outline-dark golden-btn rounded-pill">Connecter</button>
                     </div>
                 </form>
+                <?php if (isset($msg)) : ?>
+                    <div class="py-2">
+                        <?php echo $msg ?>
+                    </div>
+                <?php endif ?>
             </div>
 
         </div>

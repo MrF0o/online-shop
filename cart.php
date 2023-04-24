@@ -57,7 +57,7 @@ if (isset($_GET['is_json'])) {
     if ($_POST['action'] == 'delCartItem') {
 
         $prod = findObjectById($_POST['product'], $old_cart['products']);
-        
+
         if ($prod > -1) {
             unset($old_cart['products'][$prod]);
             setcookie('cart', json_encode($old_cart), time() + 3600);
@@ -102,8 +102,19 @@ if (isset($_GET['is_json'])) {
         }
     }
 
-    $query = "SELECT *,  address.address_line_1, address.address_line_2, address.postal_code FROM clients INNER JOIN address ON address.id=clients.address_id";
-    $membre = mysqli_fetch_assoc(mysqli_query($db, $query));
+
+    
+    $email = $_SESSION['login'] ?? NULL;
+
+    $query_user = "SELECT * FROM clients WHERE email='$email'";
+    $membre = mysqli_fetch_assoc(mysqli_query($db, $query_user));
+
+    if ($membre && $membre['address_id']) {
+        $query_address = "SELECT * FROM address WHERE id={$membre['address_id']}";
+        $address = mysqli_fetch_assoc(mysqli_query($db, $query_address));
+    } else {
+        $address = NULL;
+    }
 }
 ?>
 
@@ -144,12 +155,7 @@ if (isset($_GET['is_json'])) {
                                                 <p class="my-auto"><?php echo $p['prix'] ?> DT</p>
                                             </td>
                                             <td class="align-middle">
-                                                <input 
-                                                    type="number" 
-                                                    value="<?php isset($cart) ? print($cart['products'][findObjectById($p['id'], $cart['products'])]['quantity']) : print(1) ?>"
-                                                    class="form-control golden-input quantity-input" 
-                                                    onchange="addToCart(<?php echo $p['id'] ?>)"    
-                                                />
+                                                <input type="number" value="<?php isset($cart) ? print($cart['products'][findObjectById($p['id'], $cart['products'])]['quantity']) : print(1) ?>" class="form-control golden-input quantity-input" onchange="addToCart(<?php echo $p['id'] ?>)" />
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button class="btn btn-outline-danger" onclick="delCartItem(<?php echo $p['id'] ?>)">
@@ -166,24 +172,35 @@ if (isset($_GET['is_json'])) {
                 </div>
             </div>
             <div class="card col-md-4 checkout-card">
-                <!-- baad tw njibou l'adresse courante mta client -->
+                <!-- baad tw njibou l'adresse courante mta client (DONE) -->
                 <div class="card-body">
-                    <div>
-                        <h5><?php echo $membre['frst_name'] . ' ' . $membre['last_name'] ?></h5>
-                    </div>
-                    <small class="fw-semibold">Adresse</small>
-                    <div class="py-2">
-                        <p>
-                            <?php echo $membre['address_line_1'] ?>
-                            <br>
-                            <?php echo $membre['address_line_2'] ?>
-                            <?php echo $membre['postal_code'] ?>
-                        </p>
-                        <a class="hover" href="modif-adresse.php">
-                            <i class="fa fa-link"></i>
-                            modifier addresse
-                        </a>
-                    </div>
+                    <?php if (isset($membre)) : ?>
+                        <div>
+                            <h5><?php echo $membre['frst_name'] . ' ' . $membre['last_name'] ?></h5>
+                        </div>
+                        <small class="fw-semibold">Adresse</small>
+                        <div class="py-2">
+                            <?php if ($address) : ?>
+                                <p>
+                                    <?php echo $address['address_line_1'] ?>
+                                    <br>
+                                    <?php echo $address['address_line_2'] ?>
+                                    <?php echo $address['postal_code'] ?>
+                                </p>
+                            <?php endif ?>
+                            <a class="hover" href="modif-adresse.php">
+                                <i class="fa fa-link"></i>
+                                modifier addresse
+                            </a>
+                        </div>
+                    <?php else : ?>
+                        <div>
+                            <p>Pour continuer, connecter A votre compte</p>
+                            <div class="my-2">
+                                <a href="create-cmd.php" class="btn btn-success">Connecter</a>
+                            </div>
+                        </div>
+                    <?php endif ?>
                     <div class="mb-2">
                         <h3>Total TTC</h3>
                         <?php
