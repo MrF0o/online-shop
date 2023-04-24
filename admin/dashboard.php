@@ -1,4 +1,10 @@
 <?php
+// --------------
+// nchoufou ken elli bech yaccessi el page est ce que admin w connectée wla
+// sinon aaml redirect lel login.php
+// page blanc!!
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

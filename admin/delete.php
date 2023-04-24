@@ -1,4 +1,11 @@
 <?php
+
+// --------------
+// Partie Delete mn CRUD lel kol (clients, produits w categorie),
+// nchoufou lparametre ?type=?? w ne3rfou anahou table elli bch nfas5ou mnh
+// haka aalech id clés primaire f les tables lkol, bch nab9ouch nsamou id_categorie w id_produits etc
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

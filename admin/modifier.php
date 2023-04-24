@@ -1,5 +1,10 @@
 <?php
 
+// --------------
+//  Partie Update mn CRUD, lel les produits w cateogies
+//  najmouch naamlou update lel users
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

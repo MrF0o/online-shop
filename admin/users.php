@@ -1,4 +1,9 @@
 <?php
+
+// -------------
+//  liste des utilisateur avec button supprimer
+// -------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

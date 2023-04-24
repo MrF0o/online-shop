@@ -1,4 +1,8 @@
 <?php
+// --------------
+//  page taamel ajout lel produits w categories
+//  ne3rfou chnwa bch najoutou bel parametre ?type=??
+// --------------
 
 if (!isset($_SESSION)) {
     session_start();

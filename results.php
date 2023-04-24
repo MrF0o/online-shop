@@ -1,5 +1,8 @@
 <?php
-
+// --------------
+// Cette page peut être utilisée pour afficher les résultats de recherche 
+// et/ou pour présenter tous les produits (catalogue)
+// --------------
 include 'config.php';
 
 $title = "Notre Catalogue";

@@ -1,4 +1,9 @@
 <?php
+
+// --------------
+// connexion pour les admins
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

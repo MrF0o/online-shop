@@ -1,4 +1,9 @@
 <?php
+// --------------
+//  partie Read mn CRUD lel les produits, liste des produits avec les button de controle:
+//  Modifier w Supprimer
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

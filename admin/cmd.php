@@ -1,4 +1,8 @@
 <?php
+// --------------
+//  partie Read mn CRUD lel cmd, en cours ...
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

@@ -1,4 +1,9 @@
 <?php
+// --------------
+//  Partie Read mn CRUD lel categories, liste des categories avec les button de controle:
+//  Modifier w Supprimer
+// --------------
+
 if (!isset($_SESSION)) {
     session_start();
 }

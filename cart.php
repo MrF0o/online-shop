@@ -1,6 +1,11 @@
 <?php
 // -----------
-// Pannier
+// Pannier: Concept
+// Chaque fois que l'utilisateur clique sur le bouton "ajouter au panier",
+// une fonction JavaScript est appelée, qui enverra une requête POST à ce fichier en utilisant Jquery ajax.
+// Si le produit est déjà dans le panier, la quantité sera simplement augmentée de 1,
+// sinon une nouvelle entrée sera ajoutée au tableau de produits. Tout cela est réalisé à l'aide de cookies.
+// -----------
 
 if (!isset($_SESSION)) {
     session_start();
