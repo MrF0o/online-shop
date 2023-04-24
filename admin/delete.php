@@ -35,8 +35,10 @@ if (isset($_SESSION['is_admin'])) {
         $sql = "DELETE FROM $table WHERE id=$id";
         mysqli_query($db, $sql);
 
-        if ($_GET['type'] == 'cmd_aff')
+        if ($_GET['type'] == 'cmd_aff') {
             header('Location: cmd.php');
+            exit;
+        }
 
         // redirect back
         header('Location: ' . $_SERVER['HTTP_REFERER']);
