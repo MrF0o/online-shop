@@ -43,9 +43,12 @@ if (isset($_SESSION['is_admin'])) {
 
             // nzidou record f table images w naamlou enregistrer lel fichier f local
             if (!empty($_FILES['product_image'])) {
+                // destination de l'image
                 $upload_dir = '../images/upload/';
+                // full path name
                 $upload_path = $upload_dir . bin2hex(openssl_random_pseudo_bytes(10)) . $_FILES['product_image']['name']; // 20 chars aléatoires puis nom de fichier
 
+                // nchoufou ken lfichier ell a5tarha taswira wla
                 $check = getimagesize($_FILES['product_image']["tmp_name"]);
                 if ($check !== false) {
                     // ken l'image akber mn 5MB
@@ -53,10 +56,11 @@ if (isset($_SESSION['is_admin'])) {
                         $msg['success'] = false;
                         $msg['msg'] = 'la taille de l\'image doit être inférieure à 5 Mo';
                     } else {
-                        // TODO: check for permissions
+                        // naamlou enregistrer lel images fl dossier de destinaton
                         move_uploaded_file($_FILES["product_image"]["tmp_name"], $upload_path);
                         $escaped = mysqli_escape_string($db, $upload_path);
 
+                        // n7otou id mta l'image fl article correspondant fl base de donnée
                         $article_id = mysqli_insert_id($db);
                         $sql = "INSERT INTO images(article_id, path) VALUES ($article_id, '$escaped')";
                         mysqli_query($db, $sql);

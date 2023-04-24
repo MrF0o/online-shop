@@ -5,6 +5,7 @@
 // une fonction JavaScript est appelée, qui enverra une requête POST à ce fichier en utilisant Jquery ajax.
 // Si le produit est déjà dans le panier, la quantité sera simplement augmentée de 1,
 // sinon une nouvelle entrée sera ajoutée au tableau de produits. Tout cela est réalisé à l'aide de cookies.
+// Si le client n'est pas connecté, il suffit de lui demander de se connecter avant de poursuivre l'achat.
 // -----------
 
 if (!isset($_SESSION)) {
