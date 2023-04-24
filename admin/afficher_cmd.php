@@ -82,7 +82,7 @@ if (isset($_SESSION['is_admin'])) {
         </div>
         <div class="row">
             <div class="col-2 mt-3">
-                <a href="delete.php?type=cmd&id=<?php print($c['id']) ?>" class="d-block btn btn-danger btn-sm me-1">
+                <a href="delete.php?type=cmd_aff&id=<?php print($id) ?>" class="d-block btn btn-danger btn-sm me-1">
                     Supprimer
                 </a>
             </div>
